@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :sellers
+
   devise_for :sellers
   devise_for :buyers
   root to: 'product#index'
