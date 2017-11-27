@@ -8,5 +8,4 @@ class ApplicationController < ActionController::Base
       edit_buyer_registration_path
     end
   end
-
 end
