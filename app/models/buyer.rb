@@ -5,5 +5,9 @@ class Buyer < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :email, presence: true, uniqueness: true
+  has_many :orders
+  has_many :reviews
+  has_many :baskets, through: :orders
+  has_many :products, through: :baskets
 
 end
