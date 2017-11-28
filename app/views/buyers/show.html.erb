@@ -1,3 +1,9 @@
+<!-- if logged in buyer, can only access his own profile -->
+<% if @buyer == current_buyer %>
+
+<h1>Buyers#show</h1>
+<p>Find me in app/views/buyers/show.html.erb</p>
+
 <div>
   <h1>Mes informations</h1>
   <table>
@@ -41,3 +47,10 @@
     <% end %>
   <% end %>
 </div>
+
+<!-- else has ACCESS DENIED -->
+<% else %>
+
+ACCESS DENIED ||
+<%= link_to "Go to Homepage", root_path %>
+<% end %>
