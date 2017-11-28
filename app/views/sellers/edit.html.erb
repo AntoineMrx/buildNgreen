@@ -1,2 +1,28 @@
-<h1>Sellers#edit</h1>
-<p>Find me in app/views/sellers/edit.html.erb</p>
+<div class="col-md-6 col-md-offset-3">
+  <h1>Sellers Edit</h1>
+</div>
+
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+        <%= simple_form_for (@seller) do |f| %>
+        <%= f.input :company_name %>
+        <%= f.label :description %>
+        <%= f.text_area :description %>
+        <%= f.input :delivery_time %>
+        <%= f.input :website  %>
+        <%= f.input :last_name %>
+        <%= f.input :first_name %>
+        <%= f.input :email %>
+        <%= f.input :address %>
+        <%= f.input :delivery_fee %>
+        <%= f.input :delivery_free_from %>
+
+
+
+        <%= f.submit "Create", class: "btn btn-primary" %>
+        <% end %>
+  </div>
+</div>
+
+
