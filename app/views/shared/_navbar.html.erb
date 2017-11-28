@@ -68,7 +68,7 @@
           <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
-              <%= link_to buyer_path(current_buyer) do %>
+              <%= link_to seller_path(current_seller) do %>
                 <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
               <% end %>
             </li>
@@ -78,7 +78,7 @@
               <% end %>
             </li>
             <li>
-              <%= link_to destroy_buyer_session_path, method: :delete do %>
+              <%= link_to destroy_seller_session_path, method: :delete do %>
 
                 <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
               <% end %>
