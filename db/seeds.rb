@@ -1,11 +1,65 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
+
 # Examples:
-#
+
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
+puts 'Creating 50 fake buyers...'
+50.times do
+  buyer = Buyer.create(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    password: "azerty",
+    email: Faker::Internet.email,
+    address: "#{Faker::Address.street_address} #{Faker::Address.zip_code} #{Faker::Address.city}"
+  )
+end
+puts 'Finished buyers!'
+
+
+puts 'Creating 25 fake sellers...'
+25.times do
+  seller = Seller.create(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    password: "azerty",
+    email: Faker::Internet.email,
+    company_name: Faker::Company.name,
+    address: "#{Faker::Address.street_address} #{Faker::Address.zip_code} #{Faker::Address.city}",
+    description: Faker::Lorem.paragraph(2, false, 4),
+    website: Faker::Internet.url,
+    delivery_time: 3,
+    delivery_fee: 25,
+    delivery_free_from: 100,
+  )
+end
+
+
+puts 'Creating 200 fake orders with baskets...'
+5.times do
+  order = Order.new(
+    order_date: Faker::Date.between(200.days.ago, Date.today),
+    status: ["En attente de validation", "Validé", "Livraison en cours", "Livré", "Annulé"].sample,
+    address: "#{Faker::Address.street_address} #{Faker::Address.zip_code} #{Faker::Address.city}",
+    buyer_id: (1..2).to_a.sample,
+  )
+  order.save!
+  (1..5).to_a.sample.times do
+    basket = Basket.new(
+      quantity: (1..5).to_a.sample,
+      product_price: (1..200).to_a.sample,
+      vat: 20,
+      order_id: order.id,
+      product_id: (1..10).to_a.sample,
+      )
+    basket.save!
+  end
+end
+
+puts 'Finished!'
 
 Category.create(name: "Terrasse & Jardin", description: "Des solutions d'aménagement pour chaque extérieur.Quoi de mieux que de se prélasser dans son jardin, de profiter d'une terrasse toute équipée, pour des moments conviviaux en famille ou entre amis ? Il est désormais possible de transformer sa terrasse en véritable pièce à vivre à l'arrivée des beaux jours, grâce à des matériaux résistants, du mobilier extérieur design, et des accessoires devenus indispensables comme le barbecue ou la plancha. Leroy Merlin propose tout ce dont vous avez besoin pour créer et aménager votre terrasse ou votre jardin de A à Z. Lames de terrasse en bois ou en composite, salons de jardin, parasols, chaises longues, hamacs, jeux de jardin…, bref, tout un univers à découvrir.
 Et pour l'entretien de vos espaces verts, découvrez un outillage adapté à toutes les surfaces. Tondeuses, taille-haies, coupe-bordures ou aspirateurs souffleurs vous seront d'une grande utilité le moment venu. Électriques ou à moteur thermique, nos outils de jardin sont également disponibles dans des versions équipées de batteries longue durée, pour une utilisation propre et silencieuse.
@@ -73,5 +127,5 @@ Product.create(name: 'Panneaux osb recyclés', description: 'Osb en bois de chut
 
 puts "finish"
 
-["Terrasse & Jardin", "Salle de bains", "Cuisine", "Rangement & Dressing", "Matériaux & Menuiserie", "Carrelage, parquet & sol", "Décoration & Eclairage", "Peinture & Droguerie", "Electricité & Domotique", "Chauffage & Plomberie", "Quincaillerie", "Outillage"]}
 end
+
