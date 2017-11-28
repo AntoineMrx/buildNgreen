@@ -1,2 +1,15 @@
-<h1>Products#show</h1>
-<p>Find me in app/views/products/show.html.erb</p>
+<h1><%=  @product.name%></h1>
+
+<ol>
+  <li>Description: <%= @product.description %></li>
+  <li>Seller: <%= @product.seller[:first_name] %> <%= @product.seller[:last_name] %></li>
+  <li>Category: <%= @product.category[:name] %></li>
+  <li>Selling price: <%= @product.selling_price %> euros</li>
+  <li>Retail price: <%= @product.retail_price %> euros</li>
+
+</ol>
+
+<div>
+  <%= link_to 'Edit Product', edit_product_path(@product), class: "btn btn-warning" %>
+</div>
+

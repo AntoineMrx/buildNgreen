@@ -1,0 +1,32 @@
+<%= simple_form_for(@product) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+  </div>
+
+    <div class="form-inputs">
+    <%= f.input :description %>
+  </div>
+
+    <div class="form-inputs">
+    <%= f.input :category_id, collection: Category.all %>
+  </div>
+
+    <div class="form-inputs">
+    <%= f.input :seller_id, collection: Seller.all %>
+  </div>
+
+   <div class="form-inputs">
+    <%= f.input :selling_price %>
+  </div>
+
+    <div class="form-inputs">
+    <%= f.input :retail_price %>
+  </div>
+
+   <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+
+<% end %>

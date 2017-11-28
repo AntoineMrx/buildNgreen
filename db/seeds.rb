@@ -103,7 +103,6 @@ end
 puts 'Finished buyers!'
 
 
-
 puts 'Creating 200 fake orders with baskets...'
 200.times do
   order = Order.new(
@@ -124,7 +123,6 @@ puts 'Creating 200 fake orders with baskets...'
     basket.save!
   end
 end
-
 
 puts "finish"
 
