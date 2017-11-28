@@ -1,2 +1,21 @@
 <h1>Buyers#show</h1>
 <p>Find me in app/views/buyers/show.html.erb</p>
+<div>
+  <%= render 'shared/form_buyer' %>
+</div>
+<div>
+  <% if @buyer.orders.nil? %>
+    <h2>Vous n'avez pas encore de commande :-( </h2>
+    <div>[Image à ajouter]</div>
+    <div>
+      <%= link_to Découvrez nos meilleurs produits root_path %>
+    </div>
+  <% else %>
+    <% @buyer.orders.each do |order| %>
+      <div>
+        <div> <%= order.order_date %> </div>
+        <div> <%= order.id %></div>
+        <div> order.sum à créer </div>
+        <div> <%= link_to détails order_path(order) %></div>
+      </div>
+</div>
