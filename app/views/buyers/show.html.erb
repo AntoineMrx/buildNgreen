@@ -1,31 +1,30 @@
 <!-- if logged in buyer, can only access his own profile -->
 <% if @buyer == current_buyer %>
 
-<h1>Buyers#show</h1>
-<p>Find me in app/views/buyers/show.html.erb</p>
-
 <div>
   <h1>Mes informations</h1>
   <table>
     <tr>
-      <td>first_name</td>
+      <td>First name</td>
       <td><%= @buyer.first_name %></td>
     </tr>
     <tr>
-      <td>last_name</td>
+      <td>Last name</td>
       <td><%= @buyer.last_name %></td>
     </tr>
     <tr>
-      <td>email</td>
+      <td>Email</td>
       <td><%= @buyer.email %></td>
     </tr>
     <tr>
-      <td>address</td>
+      <td>Address</td>
       <td><%= @buyer.address %></td>
     </tr>
   </table>
-  <div class="btn btn-primary">Mettre à jour</div>
-</div>
+  <%= link_to edit_buyer_path do %>
+    <div class="btn btn-primary">Modifier</div>
+    </div>
+  <% end %>
 <div>
   <% if @buyer.orders.count == 0 %>
     <h2>Vous n'avez pas encore de commande :-( </h2>
