@@ -127,5 +127,4 @@ Product.create(name: 'Panneaux osb recyclés', description: 'Osb en bois de chut
 
 puts "finish"
 
-end
 
