@@ -3,11 +3,45 @@
 </div>
 
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
-  <ul>
+  <div class="col-md-6 col-md-offset-3" >
+<!-- Un lien a été fait via chaque lettre au companys commençant par cette même lettre  -->
+     <h6>
+      <%=link_to 'A', sellers_path(company_name: 'A') %> |
+      <%=link_to 'B', sellers_path(company_name: 'B') %> |
+      <%=link_to 'C', sellers_path(company_name: 'C') %> |
+      <%=link_to 'D', sellers_path(company_name: 'D') %> |
+      <%=link_to 'E', sellers_path(company_name: 'E') %> |
+      <%=link_to 'F', sellers_path(company_name: 'F') %> |
+      <%=link_to 'G', sellers_path(company_name: 'G') %> |
+      <%=link_to 'H', sellers_path(company_name: 'H') %> |
+      <%=link_to 'I', sellers_path(company_name: 'I') %> |
+      <%=link_to 'J', sellers_path(company_name: 'J') %> |
+      <%=link_to 'K', sellers_path(company_name: 'K') %> |
+      <%=link_to 'L', sellers_path(company_name: 'L') %> |
+      <%=link_to 'M', sellers_path(company_name: 'M') %> |
+      <%=link_to 'N', sellers_path(company_name: 'N') %> |
+      <%=link_to 'O', sellers_path(company_name: 'O') %> |
+      <%=link_to 'P', sellers_path(company_name: 'P') %> |
+      <%=link_to 'Q', sellers_path(company_name: 'Q') %> |
+      <%=link_to 'R', sellers_path(company_name: 'R') %> |
+      <%=link_to 'S', sellers_path(company_name: 'S') %> |
+      <%=link_to 'T', sellers_path(company_name: 'T') %> |
+      <%=link_to 'U', sellers_path(company_name: 'U') %> |
+      <%=link_to 'V', sellers_path(company_name: 'V') %> |
+      <%=link_to 'W', sellers_path(company_name: 'W') %> |
+      <%=link_to 'X', sellers_path(company_name: 'X') %> |
+      <%=link_to 'Y', sellers_path(company_name: 'Y') %> |
+      <%=link_to 'Z', sellers_path(company_name: 'Z') %> |
+    </h6>
 
-    <% @seller.each do |c| %>
-      <li> <%= link_to("c.last_name", seller_path(c) )%> </li>
+  <ul>
+    <% @sellers.each do |c| %>
+    <!-- je veux afficher que les sellers qui ont au moins 1 produits + un nom de société-->
+      <% if c.products.count > 0 && c.company_name != nil %>
+        <li> <%= link_to seller_path(c) do %>
+          <%= "#{c.company_name} (#{c.products.count} Products)"%> </li>
+        <% end %>
+      <% end %>
     <% end %>
 
   </ul>
