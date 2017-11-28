@@ -1,0 +1,16 @@
+.btn-yours{
+border: 2px solid $light-gray;
+border-radius: 20px;
+padding: 15px 25px;
+color: $light-gray;
+font-weight: lighter;
+transition: background 0.3s ease;
+}
+
+
+.btn-yours:hover {
+    opacity: 0.75;
+    background: #6e7560;
+    text-decoration: none;
+    color: white;
+}
