@@ -4,7 +4,7 @@
 
 <div class="container">
   <div class="category-row">
-        <% @categories.each do |category| %>
+        <% @categories.order(:id).each do |category| %>
         <div class="col-xs-12 col-sm-4">
           <div class="card">
             <%= link_to category_path(category) do %>
