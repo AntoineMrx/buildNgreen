@@ -1,12 +1,30 @@
-<h1>Buyers#show</h1>
-<p>Find me in app/views/buyers/show.html.erb</p>
 <div>
-  <%= render 'shared/form_buyer' %>
+  <h1>Mes informations</h1>
+  <table>
+    <tr>
+      <td>first_name</td>
+      <td><%= @buyer.first_name %></td>
+    </tr>
+    <tr>
+      <td>last_name</td>
+      <td><%= @buyer.last_name %></td>
+    </tr>
+    <tr>
+      <td>email</td>
+      <td><%= @buyer.email %></td>
+    </tr>
+    <tr>
+      <td>address</td>
+      <td><%= @buyer.address %></td>
+    </tr>
+  </table>
+  <div class="btn btn-primary">Mettre à jour</div>
 </div>
-<div style="display: inline">
-  <% if @buyer.orders.nil? %>
+<div>
+  <% if @buyer.orders.count == 0 %>
     <h2>Vous n'avez pas encore de commande :-( </h2>
-    <div>[Image à ajouter]</div>
+    <div> <%= image_tag("/assets/sad_kitten.jpg") %>
+    </div>
     <div>
       <%= link_to "Découvrez nos meilleurs produits", root_path %>
     </div>
@@ -14,9 +32,11 @@
     <% @buyer.orders.each do |order| %>
       <div>
         <div> <%= order.order_date %> </div>
-        <div> Commande N°<%= order.id %></div>
+        <div> Commande N°<%= order.id %> </div>
         <div> <%= order.sum %>€ </div>
-        <div> <%= link_to "Détails", order_path(order) %> </div>
+        <!-- Mettre une mise en forme pour le statut (ou des pictos) ? ex : vert, rouge, gris -->
+        <div> <%= order.status %> </div>
+        <div> <%= link_to "Détails", order_path(order), class:"btn btn-primary" %> </div>
       </div>
     <% end %>
   <% end %>

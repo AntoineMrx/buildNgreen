@@ -4,6 +4,7 @@ class Seller < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :products
+  has_many :baskets, through: :products
   validates :email, uniqueness: true, presence: true
   validates :company_name, uniqueness: true, allow_nil: true
   # validates :first_name, presence: true
