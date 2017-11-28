@@ -103,14 +103,13 @@ end
 puts 'Finished buyers!'
 
 
-
 puts 'Creating 200 fake orders with baskets...'
 200.times do
   order = Order.new(
     order_date: Faker::Date.between(200.days.ago, Date.today),
     status: ["En attente de validation", "Validé", "Livraison en cours", "Livré", "Annulé"].sample,
     address: "#{Faker::Address.street_address} #{Faker::Address.zip_code} #{Faker::Address.city}",
-    buyer_id: (1..2).to_a.sample,
+    buyer_id: (1..50).to_a.sample,
   )
   order.save!
   (1..5).to_a.sample.times do
@@ -124,7 +123,6 @@ puts 'Creating 200 fake orders with baskets...'
     basket.save!
   end
 end
-
 
 puts "finish"
 

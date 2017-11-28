@@ -3,19 +3,21 @@
 <div>
   <%= render 'shared/form_buyer' %>
 </div>
-<div>
+<div style="display: inline">
   <% if @buyer.orders.nil? %>
     <h2>Vous n'avez pas encore de commande :-( </h2>
     <div>[Image à ajouter]</div>
     <div>
-      <%= link_to Découvrez nos meilleurs produits root_path %>
+      <%= link_to "Découvrez nos meilleurs produits", root_path %>
     </div>
   <% else %>
     <% @buyer.orders.each do |order| %>
       <div>
         <div> <%= order.order_date %> </div>
-        <div> <%= order.id %></div>
-        <div> order.sum à créer </div>
-        <div> <%= link_to détails order_path(order) %></div>
+        <div> Commande N°<%= order.id %></div>
+        <div> <%= order.sum %>€ </div>
+        <div> <%= link_to "Détails", order_path(order) %> </div>
       </div>
+    <% end %>
+  <% end %>
 </div>

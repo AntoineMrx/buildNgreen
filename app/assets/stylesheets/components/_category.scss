@@ -1,0 +1,21 @@
+// style for category index & show
+
+.container {
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+
+
+.card {
+  flex: 0 0 32%;
+  height: 250px;
+}
+
+.card-picture {
+  height: 150px;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
