@@ -55,3 +55,23 @@ Vous trouverez sur notre site internet tous les conseils sur le choix et l’uti
 Pour les professionnels du bricolage, nous proposons le meilleur de l’outillage à main, électroportatif et spécialisé, ainsi que des éléments de protection et des machines d’atelier. Notre sélection d’outils et de matériaux vous permettra de réaliser les chantiers les plus variés jusqu’au gros œuvre. De nombreux outils et machines d’atelier sont également disponibles à la location, pour vous permettre de répondre à des besoins ponctuels pour vos travaux.
 Avis aux amateurs de bonnes affaires : n’hésitez pas à vous rendre régulièrement sur le site ou en boutique pour bénéficier de nos promos outillage .
 ")
+
+puts 'creating products'
+
+Product.create(name: 'Béton de Chanvre', description: 'Béton ecolo', selling_price: 25, retail_price: 22,category_id: (1..11).to_a.sample, seller_id: (1..25).to_a.sample)
+Product.create(name: 'Parquet recyclé', description: 'parquet ecolo', selling_price: 34, retail_price: 35,category_id: (1..11).to_a.sample, seller_id: (1..25).to_a.sample)
+Product.create(name: 'Peinture eco', description: 'peinture ecolo', selling_price: 28, retail_price: 29,category_id: (1..11).to_a.sample, seller_id: (1..25).to_a.sample)
+Product.create(name: 'Brique monomur', description: 'brique ecolo', selling_price: 75, retail_price: 76,category_id: (1..11).to_a.sample, seller_id: (1..25).to_a.sample)
+Product.create(name: 'Puit de lumière', description: 'lumière ecolo', selling_price: 40, retail_price: 45,category_id: (1..11).to_a.sample, seller_id: (1..25).to_a.sample)
+Product.create(name: 'Marteau ecolo', description: 'Marteau en bois recyclé', selling_price: 10, retail_price: 11,category_id: (1..11).to_a.sample, seller_id: (1..25).to_a.sample)
+Product.create(name: 'Laine de roche recyclée', description: 'laine de roche avec matériaux de récup', selling_price: 20, retail_price: 19,category_id: (1..11).to_a.sample, seller_id: (1..25).to_a.sample)
+Product.create(name: 'Moquette recyclée', description: 'moquette fabriquée avec des bouteilles recyclées', selling_price: 12, retail_price: 13,category_id: (1..11).to_a.sample, seller_id: (1..25).to_a.sample)
+Product.create(name: 'Carrelage recyclé', description: 'carrelage en céramique de récupération', selling_price: 56, retail_price: 57,category_id: (1..11).to_a.sample, seller_id: (1..25).to_a.sample)
+Product.create(name: 'Panneaux osb recyclés', description: 'Osb en bois de chutes d\'atelier', selling_price: 37, retail_price: 38,category_id: (1..11).to_a.sample, seller_id: (1..25).to_a.sample)
+
+
+
+puts "finish"
+
+["Terrasse & Jardin", "Salle de bains", "Cuisine", "Rangement & Dressing", "Matériaux & Menuiserie", "Carrelage, parquet & sol", "Décoration & Eclairage", "Peinture & Droguerie", "Electricité & Domotique", "Chauffage & Plomberie", "Quincaillerie", "Outillage"]}
+end
