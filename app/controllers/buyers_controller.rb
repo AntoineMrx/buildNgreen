@@ -1,22 +1,36 @@
 class BuyersController < ApplicationController
-  def index
-  end
+before_action :load_buyer, only: [:show, :update, :destroy, :edit]
 
-  def new
-  end
+  # def new
+  # end
 
-  def create
-  end
+  # def create
+  # end
 
-  def update
+  def show
+
   end
 
   def edit
+
   end
 
-  def show
+  def update
+
   end
+
 
   def destroy
   end
+
+  private
+
+  def load_buyer
+    @buyer = Buyer.find(params[:id])
+  end
+
+  def buyer_params
+    params.require(:cocktail).permit(:name, :photo)
+  end
+
 end
