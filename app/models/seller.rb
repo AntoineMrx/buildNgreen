@@ -5,7 +5,7 @@ class Seller < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :products
   validates :email, uniqueness: true, presence: true
-  validates :company_name, uniqueness: true
+  validates :company_name, uniqueness: true, allow_nil: true
   # validates :first_name, presence: true
   # validates :last_name, presence: true
   # validates :address, presence: true
