@@ -1,0 +1,11 @@
+  <%= simple_form_for(@buyer) do |f| %>
+    <%= f.label :first_name %>
+    <%= f.text_field :last_name %>
+    <%= f.input :email %>
+    <%= f.input :address %>
+    <%= f.input :address %>
+    <%= f.input :address %>
+    <%= f.input :address %>
+    <%= f.input :address %>
+    <%= f.submit "valider", class:'btn btn-primary' %>
+  <% end %>
