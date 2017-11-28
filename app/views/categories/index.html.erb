@@ -2,6 +2,21 @@
 <p>Find me in app/views/categories/index.html.erb</p>
 
 
-<% @categories.each do |category| %>
-<%= link_to category.name, category_path(category) %>
-<% end %>
+<div class="container">
+  <div class="category-row">
+        <% @categories.order(:id).each do |category| %>
+        <div class="col-xs-12 col-sm-4">
+          <div class="card">
+            <%= link_to category_path(category) do %>
+              <div class="card-body">
+               <%= image_tag("/assets/category/#{category.id}.jpeg", class: "card-picture", height: 400, width: 600, crop: :fill) %>
+               </div>
+              <div class="card-name">
+                <%= category.name %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <% end %>
+  </div>
+</div>
