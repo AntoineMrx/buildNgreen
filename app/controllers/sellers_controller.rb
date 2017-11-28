@@ -1,6 +1,6 @@
 class SellersController < ApplicationController
 
-  before_action :set_seller, only:[:edit, :update]
+  before_action :set_seller, only:[:edit, :update, :show]
 
   def index
   end

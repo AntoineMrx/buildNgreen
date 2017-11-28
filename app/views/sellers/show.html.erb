@@ -1,2 +1,47 @@
-<h1>Sellers#show</h1>
-<p>Find me in app/views/sellers/show.html.erb</p>
+
+
+<!-- For seller to have personal page to update profile etc... -->
+<% if @seller == current_seller %>
+
+<ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#home">Orders</a></li>
+  <li><a data-toggle="tab" href="#menu1">Products</a></li>
+  <li><a data-toggle="tab" href="#menu2">Info</a></li>
+</ul>
+
+<div class="tab-content">
+  <div id="home" class="tab-pane fade in active">
+    <h3>Orders</h3>
+    <div style="display: inline">
+  <% if @seller.orders.nil? %>
+    <h2>Vous n'avez pas encore de commande :-( </h2>
+    <div>[Image à ajouter]</div>
+
+  <% else %>
+    <% @seller.orders.each do |order| %>
+      <div>
+        <div> <%= order.order_date %> </div>
+        <div> Commande N°<%= order.id %></div>
+        <div> <%= order.sum %>€ </div>
+        <div> <%= link_to "Détails", order_path(order) %> </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+  </div>
+  <div id="menu1" class="tab-pane fade">
+    <h3>Products</h3>
+    <p>Some content in menu 1.</p>
+  </div>
+  <div id="menu2" class="tab-pane fade">
+    <h3>Info</h3>
+    <p>Some content in menu 2.</p>
+  </div>
+</div>
+
+<!-- for PUBLIC seller profile -->
+<% else  %>
+
+
+
+<% end  %>

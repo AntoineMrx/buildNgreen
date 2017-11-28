@@ -1,2 +1,38 @@
-<h1>Orders#show</h1>
-<p>Find me in app/views/orders/show.html.erb</p>
+<h1>Détail de la commande N°<%= @order.id %></h1>
+<div>Statut de la commande : <%= @order.status %></div>
+<div>Date de la commande : <%= @order.order_date %></div>
+<br>
+<div>Contenu de la commande : </div>
+<table>
+  <tr>
+    <th>Photo</th>
+    <th>Produit</th>
+    <th>Vendeur</th>
+    <th>ID</th>
+    <th>Quantité</th>
+    <th>Prix</th>
+  </tr>
+  <% @order.baskets.includes(:seller).each do |basket| %>
+    <tr>
+      <td></td>
+      <td><%= basket.product.name %></td>
+      <td><%= basket.seller.company_name %></td>
+      <td><%= basket.id %></td>
+      <td><%= basket.quantity %></td>
+      <td><%= basket.product_price %>€</td>
+    </tr>
+  <% end %>
+    <tr>
+      <td></td>
+      <td></td>
+      <td colspan = 2>Total</td>
+      <td><%= @order.sum  %>€</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td colspan = 2>Dont TVA</td>
+      <td><%= @order.tva  %>€</td>
+    </tr>
+</table>
+<div><%= link_to "Retour aux commandes", buyer_path(current_buyer), class:"btn btn-primary" %></div>
