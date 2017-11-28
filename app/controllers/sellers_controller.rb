@@ -8,7 +8,8 @@ class SellersController < ApplicationController
   end
 
   def update
-    @seller = seller.update(seller_params)
+    @seller = @seller.update(seller_params)
+    redirect_to products_path
   end
 
   def show
