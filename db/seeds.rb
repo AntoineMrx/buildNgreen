@@ -73,5 +73,4 @@ Product.create(name: 'Panneaux osb recyclés', description: 'Osb en bois de chut
 
 puts "finish"
 
-["Terrasse & Jardin", "Salle de bains", "Cuisine", "Rangement & Dressing", "Matériaux & Menuiserie", "Carrelage, parquet & sol", "Décoration & Eclairage", "Peinture & Droguerie", "Electricité & Domotique", "Chauffage & Plomberie", "Quincaillerie", "Outillage"]}
 end
