@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'categories/index'
-
-  get 'categories/show'
-
   devise_for :sellers, controllers: { registrations: "registrations" }
   devise_for :buyers, controllers: { registrations: "registrations" }
 
