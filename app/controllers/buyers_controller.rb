@@ -1,11 +1,5 @@
 class BuyersController < ApplicationController
-before_action :load_buyer, only: [:show, :update, :destroy, :edit]
-
-  # def new
-  # end
-
-  # def create
-  # end
+  before_action :load_buyer, only: [:show, :update, :destroy, :edit]
 
   def show
 
@@ -16,7 +10,8 @@ before_action :load_buyer, only: [:show, :update, :destroy, :edit]
   end
 
   def update
-
+    @buyer.update_attributes(buyer_params)
+    redirect_to buyer_path(@buyer)
   end
 
 
@@ -30,7 +25,6 @@ before_action :load_buyer, only: [:show, :update, :destroy, :edit]
   end
 
   def buyer_params
-    params.require(:cocktail).permit(:name, :photo)
+    params.require(:buyer).permit(:first_name, :last_name, :email, :address)
   end
-
 end
