@@ -63,5 +63,34 @@
 <% else  %>
 
 
+HELLO
+<div class="container">
+  <div class="picture"></div>
+  <div class="info">
+    <div class="name"> </div>
+    <div class="rating"></div>
+    <div class="links"></div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <% @seller.products.each do |product| %>
+        <div class="col-xs-12 col-sm-4">
+          <div class="card">
+            <%= link_to product_path(product) do %>
+              <div class="card-body">
+
+               </div>
+              <div class="card-name">
+                <%= product.name %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <% end %>
+  </div>
+</div>
+
 
 <% end  %>
