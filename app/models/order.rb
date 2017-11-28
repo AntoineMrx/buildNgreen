@@ -9,4 +9,8 @@ class Order < ApplicationRecord
     end
     return sum
   end
+
+  def tva
+    return (sum*0.2/1.2).round(2)
+  end
 end
