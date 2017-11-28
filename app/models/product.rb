@@ -5,5 +5,4 @@ class Product < ApplicationRecord
   validates :description, presence: true
   validates :selling_price, presence: true
   validates :retail_price, presence: true
-  validates :category, presence: true
 end
