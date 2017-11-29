@@ -1,4 +1,5 @@
 class BasketsController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: :add_item
 
   def show
 
@@ -10,21 +11,26 @@ class BasketsController < ApplicationController
 
   def add_item
     print "hello on est là"
+    print params
+    print params[:id].to_i
     product_id = params[:id].to_i
     if buyer_signed_in?
       # truc si buyer loggué
     elsif session[:basket].nil?
+      print "je passe par là"
       session[:basket] = []
       session[:basket] << { product_id.to_s.to_sym => 1 }
+      print "je vais imprimer session"
+      print session[:basket]
     else
-      if session[:basket][product_id].nil?
-        session[:basket] << { product_id.to_s.to_sym => 1 }
+      basket = session[:basket]
+      if basket[product_id].nil?
+        basket << { product_id.to_s.to_sym => 1 }
       else
-        session[:basket][product_id.to_s.to_sym] += 1
+        basket[product_id.to_s.to_sym] += 1
       end
+    session[:basket] = basket
     end
-    puts "je vais printer la session basket"
-    print session[:basket]
     session[:basket]
   end
 
