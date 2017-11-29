@@ -4,7 +4,7 @@
 //= require_tree .
 
 
-document.querySelector(".fa-cart-plus").addEventListener("click", () => {
+document.querySelector(".fa-cart-plus").addEventListener("click", function() {
   // Do something (callback)
   fetch("/add_item", {
     method: "POST",
