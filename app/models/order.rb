@@ -1,6 +1,7 @@
 class Order < ApplicationRecord
   belongs_to :buyer
   has_many :baskets
+  has_many :products, through: :baskets
 
   def sum
     sum = 0

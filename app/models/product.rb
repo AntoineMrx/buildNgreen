@@ -1,6 +1,7 @@
 class Product < ApplicationRecord
   belongs_to :seller
   belongs_to :category
+  has_many :baskets
 
   validates :name, presence: true
   validates :description, presence: true

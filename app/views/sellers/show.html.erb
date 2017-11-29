@@ -4,36 +4,56 @@
 <% if @seller == current_seller %>
 
 <ul class="nav nav-tabs">
-  <li class="active"><a data-toggle="tab" href="#home">Orders</a></li>
-  <li><a data-toggle="tab" href="#menu1">Products</a></li>
-  <li><a data-toggle="tab" href="#menu2">Info</a></li>
+  <li class="active"><a data-toggle="tab" href="#orders">Orders</a></li>
+  <li><a data-toggle="tab" href="#products">Products</a></li>
+  <li><a data-toggle="tab" href="#info">Info</a></li>
 </ul>
 
 <div class="tab-content">
-  <div id="home" class="tab-pane fade in active">
+  <!-- CONTENT ORDER TAB, repris & adapté du BUYER SHOW pour ORDER -->
+  <div id="orders" class="tab-pane fade in active">
     <h3>Orders</h3>
-    <div style="display: inline">
-  <% if @seller.orders.nil? %>
+    <% if @seller.orders.count == 0 %>
     <h2>Vous n'avez pas encore de commande :-( </h2>
-    <div>[Image à ajouter]</div>
-
+    <div> <%= image_tag("/assets/sad_kitten.jpg") %>
+    </div>
+    <div>
+      <%= link_to "Découvrez nos meilleurs produits", root_path %>
+    </div>
   <% else %>
     <% @seller.orders.each do |order| %>
       <div>
         <div> <%= order.order_date %> </div>
-        <div> Commande N°<%= order.id %></div>
+        <div> Commande N°<%= order.id %> </div>
         <div> <%= order.sum %>€ </div>
-        <div> <%= link_to "Détails", order_path(order) %> </div>
+        <!-- Mettre une mise en forme pour le statut (ou des pictos) ? ex : vert, rouge, gris -->
+        <div> <%= order.status %> </div>
+        <div> <%= link_to "Détails", order_path(order), class:"btn btn-primary" %> </div>
       </div>
     <% end %>
   <% end %>
-</div>
   </div>
-  <div id="menu1" class="tab-pane fade">
+
+  <div id="products" class="tab-pane fade">
     <h3>Products</h3>
-    <p>Some content in menu 1.</p>
+    <% if @seller.products.count == 0 %>
+      <h2>Vous n'avez pas encore de commande :-( </h2>
+      <div> <%= image_tag("/assets/sad_kitten.jpg") %>
+      </div>
+      <div>
+        <%= link_to "Découvrez nos meilleurs produits", root_path %>
+      </div>
+    <% else %>
+      <ul>
+      <% @seller.products.each do |order| %>
+        <li> <%= product.name %> </li>
+      <% end %>
+     </ul>
+    <% end %>
   </div>
-  <div id="menu2" class="tab-pane fade">
+
+
+  <div id="info" class="tab-pane fade">
     <h3>Info</h3>
     <p>Some content in menu 2.</p>
   </div>
@@ -42,6 +62,35 @@
 <!-- for PUBLIC seller profile -->
 <% else  %>
 
+
+HELLO
+<div class="container">
+  <div class="picture"></div>
+  <div class="info">
+    <div class="name"> </div>
+    <div class="rating"></div>
+    <div class="links"></div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <% @seller.products.each do |product| %>
+        <div class="col-xs-12 col-sm-4">
+          <div class="card">
+            <%= link_to product_path(product) do %>
+              <div class="card-body">
+
+               </div>
+              <div class="card-name">
+                <%= product.name %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <% end %>
+  </div>
+</div>
 
 
 <% end  %>
