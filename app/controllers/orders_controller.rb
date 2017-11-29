@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-before_action :load_order, only: [:show, :update, :destroy, :edit]
+before_action :load_order, only: [:show, :update, :destroy, :edit, :update]
   def index
   end
 
@@ -10,6 +10,11 @@ before_action :load_order, only: [:show, :update, :destroy, :edit]
   def edit
   end
 
+  def update
+    @order.update_attributes(order_params)
+
+  end
+
   private
 
   def load_order
@@ -17,6 +22,6 @@ before_action :load_order, only: [:show, :update, :destroy, :edit]
   end
 
   def order_params
-    params.require(:order).permit(:name, :photo)
+    params.require(:order).permit(:status)
   end
 end

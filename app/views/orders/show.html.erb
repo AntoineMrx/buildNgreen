@@ -35,4 +35,9 @@
       <td><%= @order.tva  %>€</td>
     </tr>
 </table>
+
+<% if buyer_signed_in? %>
 <div><%= link_to "Retour aux commandes", buyer_path(current_buyer), class:"btn btn-primary" %></div>
+<% elsif seller_signed_in? %>
+<div><%= link_to "Retour aux commandes", seller_path(current_seller), class:"btn btn-primary" %></div>
+<% end %>
