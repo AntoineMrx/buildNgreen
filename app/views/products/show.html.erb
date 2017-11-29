@@ -1,15 +1,38 @@
-<h1><%=  @product.name%></h1>
 
-<ol>
-  <li>Description: <%= @product.description %></li>
-  <li>Seller: <%= @product.seller[:first_name] %> <%= @product.seller[:last_name] %></li>
-  <li>Category: <%= @product.category[:name] %></li>
-  <li>Selling price: <%= @product.selling_price %> euros</li>
-  <li>Retail price: <%= @product.retail_price %> euros</li>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3" >
+    <div id="titre" style="border: 3px solid lightgrey "><h1><%=  @product.name %></h1></div>
+  </div>
 
-</ol>
+  <div class="col-md-6" >
+<!-- image du produit vers la gauche (choisi une image par defaut pour tout les produits-->
+  <!-- Le prix sous l'image -->
+    <%= image_tag  "beton_chanvre.jpg"%>
+    <ul id="prix">
+      <li><h5>Selling price:</h5> <%= @product.selling_price %> euros</li>
+      <li><h5>Retail price:</h5> <%= @product.retail_price %> euros</li>
+    </ul>
+  </div>
+<!-- Category vers la droite -->
+  <div class="col-md-6" id="category" >
 
-<div>
-  <%= link_to 'Edit Product', edit_product_path(@product), class: "btn btn-warning" %>
+    <ul>
+      <li><h4> Quantity:</h4> <%= link_to"3" %></li>
+      <li><h4>Category:</h4> <%= @product.category[:name] %></li>
+      <li><h4>Seller:</h4> <%= @product.seller[:first_name] %> <%= @product.seller[:last_name] %></li>
+    </ul>
+  </div>
+
 </div>
+
+  <div id="description">
+    <ul>
+        <li><h4>Description:</h4> <%= @product.description %></li>
+    </ul>
+  </div>
+
+  <div>
+    <%= link_to 'Edit Product', edit_product_path(@product), class: "btn btn-warning" %>
+  </div>
+
 
