@@ -8,6 +8,8 @@ before_action :load_order, only: [:show, :update, :destroy, :edit, :update]
   end
 
   def edit
+    # see that later
+    @order = Order.update(load_order)
   end
 
   def update

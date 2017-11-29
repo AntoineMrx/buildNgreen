@@ -3,6 +3,13 @@ class SellersController < ApplicationController
   before_action :set_seller, only:[:edit, :update, :show]
 
   def index
+    # si la company_name commence par la lettre cliquée elle nous renvoie la liste de ces companys
+    # sinon elle nous montre toute la liste des companys par ordre alphabetique
+    if params[:company_name]
+      @sellers = Seller.where "company_name ILIKE ?", "#{params[:company_name]}%"
+    else
+      @sellers = Seller.all.order('company_name')
+    end
   end
 
   def edit
