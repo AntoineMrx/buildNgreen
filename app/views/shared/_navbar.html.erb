@@ -1,7 +1,7 @@
 <div class="navbar-wagon">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "logo.png" %>
+    <%= image_tag "logo.svg" %>
   <% end %>
 
   <!-- Right Navigation -->
@@ -41,7 +41,7 @@
       <%= link_to "Mes commandes", seller_path(current_seller), class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Mes produits", seller_path(current_seller), class: "navbar-wagon-item navbar-wagon-link" %>
       <div class="navbar-wagon-item navbar-wagon-link"><%= current_seller.company_name %> <br>
-        <%= link_to destroy_buyer_session_path, method: :delete do %>
+        <%= link_to destroy_seller_session_path, method: :delete do %>
           <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Deconnexion") %>
         <% end %>
       </div>
