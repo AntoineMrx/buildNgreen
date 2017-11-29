@@ -26,9 +26,3 @@ before_action :load_order, only: [:show, :update, :destroy, :edit, :update]
     params.require(:order).permit(:status)
   end
 end
-
-   t.integer  "quantity"
-    t.integer  "product_price"
-    t.integer  "vat"
-    t.integer  "order_id"
-    t.integer  "product_id"
