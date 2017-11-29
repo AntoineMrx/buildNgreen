@@ -11,9 +11,10 @@ before_action :load_order, only: [:show, :update, :destroy, :edit, :update]
   end
 
   def update
-    @order.update_attributes(order_params)
-
+    @order.update(order_params)
   end
+
+
 
   private
 

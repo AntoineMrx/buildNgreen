@@ -32,7 +32,7 @@
           </tr>
         </thead>
         <tbody>
-        <% @seller.orders.each do |order| %>
+        <% @seller.orders.order("created_at DESC").each do |order| %>
           <%= simple_form_for(order) do |f| %>
           <%= f.error_notification %>
           <tr>
@@ -58,6 +58,7 @@
 
   <div id="products" class="tab-pane fade">
     <h3>Products</h3>
+    <%= link_to "Add Product", new_product_path, class:"btn btn-primary" %>
     <% if @seller.products.count == 0 %>
       <h2>Vous n'avez pas encore de commande :-( </h2>
       <div> <%= image_tag("/assets/sad_kitten.jpg") %>
@@ -79,7 +80,7 @@
           </tr>
         </thead>
         <tbody>
-        <% @seller.products.each do |product| %>
+        <% @seller.products.order(:id).each do |product| %>
           <%= simple_form_for(product) do |f| %>
           <%= f.error_notification %>
           <tr>
@@ -104,6 +105,6 @@
 
   <div id="info" class="tab-pane fade">
     <h3>Info</h3>
-    <p>Some content in menu 2.</p>
+    <%= render "form" %>
   </div>
 </div>
