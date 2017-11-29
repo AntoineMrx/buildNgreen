@@ -11,7 +11,7 @@
     <%= link_to "Update Selected", "#" , class:"btn btn-primary" %>
     <% if @seller.orders.count == 0 %>
       <h2>Vous n'avez pas encore de commande :-( </h2>
-      <div> <%= image_tag("/assets/sad_kitten.jpg") %>
+      <div> <%= image_tag("sad_kitten.jpg") %>
       </div>
       <div>
         <%= link_to "Découvrez nos meilleurs produits", root_path %>
@@ -61,7 +61,7 @@
     <%= link_to "Add Product", new_product_path, class:"btn btn-primary" %>
     <% if @seller.products.count == 0 %>
       <h2>Vous n'avez pas encore de commande :-( </h2>
-      <div> <%= image_tag("/assets/sad_kitten.jpg") %>
+      <div> <%= image_tag("sad_kitten.jpg") %>
       </div>
       <div>
         <%= link_to "Découvrez nos meilleurs produits", root_path %>
