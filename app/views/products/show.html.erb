@@ -1,15 +1,51 @@
-<h1><%=  @product.name%></h1>
 
-<ol>
-  <li>Description: <%= @product.description %></li>
-  <li>Seller: <%= @product.seller[:first_name] %> <%= @product.seller[:last_name] %></li>
-  <li>Category: <%= @product.category[:name] %></li>
-  <li>Selling price: <%= @product.selling_price %> euros</li>
-  <li>Retail price: <%= @product.retail_price %> euros</li>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3" >
+    <div id="titre" style="border: 3px solid lightgrey "><h1><%=  @product.name %></h1></div>
+  </div>
 
-</ol>
+  <div class="col-md-6" >
+<!-- image du produit vers la gauche (choisi une image par defaut pour tout les produits-->
+  <!-- Le prix sous l'image -->
+    <%= image_tag  "beton_chanvre.jpg"%>
+    <ul id="prix">
+       <li><h5>Category:</h5> <%= @product.category[:name] %></li>
+      <li><h5>Seller:</h5> <%= @product.seller[:first_name] %> <%= @product.seller[:last_name] %></li>
 
-<div>
-  <%= link_to 'Edit Product', edit_product_path(@product), class: "btn btn-warning" %>
+    </ul>
+  </div>
+<!-- Category vers la droite -->
+  <div class="col-md-6" id="category" >
+
+    <ul>
+      <li><h4>Retail price:</h4> <%= @product.retail_price %> euros</li>
+      <li><h5>Selling price:</h5> <%= @product.selling_price %> euros</li>
+        <div class="form-group">
+          <label for="sel1">Select quantity:</label>
+          <select class="form-control" id="sel1">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+          </select>
+        </div>
+       </ul>
+        <div class="col-md-6 col-md-offset-5" >
+          <%= link_to 'Add to cart', product_path(@product), class: "btn btn-primary" %>
+        </div>
+
+
+  </div>
+
 </div>
+
+  <div id="description">
+    <ul>
+        <li><h4>Description:</h4> <%= @product.description %></li>
+    </ul>
+  </div>
+
+  <div>
+    <%= link_to 'Edit Product', edit_product_path(@product), class: "btn btn-warning" %>
+  </div>
+
 
