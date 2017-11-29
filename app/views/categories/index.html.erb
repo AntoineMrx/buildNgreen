@@ -9,7 +9,7 @@
           <div class="card">
             <%= link_to category_path(category) do %>
               <div class="card-body">
-               <%= image_tag(url(asset_path("/category/#{:id}.jpg")), class: "card-picture", height: 400, width: 600, crop: :fill) %>
+               <%= asset_path "/category/#{:id}.jpg", class: "card-picture", height: 400, width: 600, crop: :fill %>
                </div>
               <div class="card-name">
                 <%= category.name %>
