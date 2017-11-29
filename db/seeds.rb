@@ -90,6 +90,7 @@ Product.create(name: 'Panneaux osb recyclés', description: 'Osb en bois de chut
 
 
 
+
 puts 'Creating 50 fake buyers...'
 50.times do
   buyer = Buyer.create(
@@ -104,6 +105,7 @@ puts 'Finished buyers!'
 
 
 puts 'Creating 200 fake orders with baskets...'
+
 200.times do
   order = Order.new(
     order_date: Faker::Date.between(200.days.ago, Date.today),
@@ -123,6 +125,33 @@ puts 'Creating 200 fake orders with baskets...'
     basket.save!
   end
 end
+
+
+50.times do
+  Product.create(name: 'TEST PRODUCT', description: 'Osb en bois de chutes d\'atelier', selling_price: 37, retail_price: 38,category_id: (1..11).to_a.sample, seller_id: 3)
+end
+
+puts 'Creating 200 fake orders with baskets...'
+2.times do
+  order = Order.new(
+    order_date: Faker::Date.between(200.days.ago, Date.today),
+    status: ["En attente de validation", "Validé", "Livraison en cours", "Livré", "Annulé"].sample,
+    address: "#{Faker::Address.street_address} #{Faker::Address.zip_code} #{Faker::Address.city}",
+    buyer_id: 10,
+  )
+  order.save!
+  15.times do
+    basket = Basket.new(
+      quantity: (1..5).to_a.sample,
+      product_price: (1..200).to_a.sample,
+      vat: 20,
+      order_id: order.id,
+      product_id: (11..50).to_a.sample,
+      )
+    basket.save!
+  end
+end
+
 
 puts "finish"
 

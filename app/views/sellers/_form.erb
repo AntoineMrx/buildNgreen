@@ -1,0 +1,17 @@
+<%= simple_form_for (@seller) do |f| %>
+        <%= f.input :company_name %>
+        <%= f.label :description %>
+        <%= f.text_area :description %>
+        <%= f.input :delivery_time %>
+        <%= f.input :website  %>
+        <%= f.input :last_name %>
+        <%= f.input :first_name %>
+        <%= f.input :email %>
+        <%= f.input :address %>
+        <%= f.input :delivery_fee %>
+        <%= f.input :delivery_free_from %>
+
+
+
+        <%= f.submit "Edit", class: "btn btn-primary" %>
+        <% end %>
