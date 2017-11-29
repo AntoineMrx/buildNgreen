@@ -1,10 +1,31 @@
-<h1>Products List</h1>
-<ul><% @products.each do |product| %>
-  <li><%= product.name %>: <%= product.description %></li>
-  <div> <%= link_to 'Show', product, class: "btn btn-primary" %></li> </div>
-<% end %>
-</ul>
 
-<div>
-  <%= link_to 'New Product', new_product_path, class: "btn btn-success" %>
-</div>
+        <div class="row">
+      <% @products.each do |product| %>
+      <div class="col-xs-12 col-sm-4">
+        <div class="card-product">
+          <div class="card-product-body" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url('<%= asset_path("product/#{product.id}.jpeg") %>'); ">
+            <span class="card-product-category"><%= product.name %></span>
+            <div class="card-product-description">
+              <h2><%= product.description %></h2>
+            </div>
+            <img class="card-product-user avatar" src="images/jad.png">
+            <a class="card-product-link" href="<%= product_path(product) %>"></a>
+          </div>
+          <div class="card-product-footer">
+           <!--  <p><strong>Category: </strong><%= product.category.name %></p> -->
+           <p><strong>Prix: </strong><%= product.selling_price %> euros</p>
+            <div class="controls">
+
+
+                <a href="#">
+                <i class="fa fa-cart-plus" aria-hidden="true"></i>
+              </a>
+
+              </a>
+              </a>
+            </div>
+          </div>
+        </div>
+        </div>
+        <% end %>
+        </div>
