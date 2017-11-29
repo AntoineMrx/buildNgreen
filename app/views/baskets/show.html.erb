@@ -1,0 +1,23 @@
+<h1>Mon panier</h1>
+
+<div>Contenu de la commande : </div>
+<table>
+  <tr>
+    <th>Photo</th>
+    <th>Produit</th>
+    <th>Vendeur</th>
+    <th>ID</th>
+    <th>Quantité</th>
+    <th>Prix</th>
+  </tr>
+  <% @array.each do |basket| %>
+    <tr>
+      <td></td>
+      <td><%= .product.name %></td>
+      <td><%= basket.product_id %></td>
+      <td></td>
+      <td><%= basket.quantity %></td>
+      <td>€</td>
+    </tr>
+  <% end %>
+</table>

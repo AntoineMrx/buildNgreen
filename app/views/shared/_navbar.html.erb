@@ -28,7 +28,7 @@
 
       <%= link_to "Mon compte", buyer_path(current_buyer), class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Mes commandes", buyer_path(current_buyer), class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Mon panier", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Mon panier", baskets_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <div class="navbar-wagon-item navbar-wagon-link">Bonjour <%= current_buyer.first_name %> ! <br>
         <%= link_to destroy_buyer_session_path, method: :delete do %>
           <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Deconnexion") %>
@@ -40,7 +40,7 @@
       <%= link_to "Mon compte", seller_path(current_seller), class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Mes commandes", seller_path(current_seller), class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Mes produits", seller_path(current_seller), class: "navbar-wagon-item navbar-wagon-link" %>
-      <div class="navbar-wagon-item navbar-wagon-link"><%= current_buyer.company_name %> <br>
+      <div class="navbar-wagon-item navbar-wagon-link"><%= current_seller.company_name %> <br>
         <%= link_to destroy_buyer_session_path, method: :delete do %>
           <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Deconnexion") %>
         <% end %>
@@ -63,7 +63,7 @@
 
       <%= link_to "S'inscrire", new_buyer_registration_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Se connecter", new_buyer_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Panier", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Panier", baskets_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
       </div>
     <% end %>
