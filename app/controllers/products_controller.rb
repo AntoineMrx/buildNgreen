@@ -4,6 +4,16 @@ class ProductsController < ApplicationController
     @products = Product.all
   end
 
+  def search
+    @word = params[:word]
+    @productList = []
+    Product.all.each do |product|
+      @productList << product if product.name.downcase.include?(@word)
+    end
+    p @productList
+
+  end
+
   def show
 
   end
