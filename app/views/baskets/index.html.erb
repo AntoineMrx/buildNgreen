@@ -1,27 +1,32 @@
 <h1>Mon panier</h1>
 
-<div>Contenu de la commande : </div>
-<table>
-  <tr>
-    <th>Photo</th>
-    <th>Produit</th>
-    <th>Vendeur</th>
-    <th>ID</th>
-    <th>Quantité</th>
-    <th>Prix</th>
-  </tr>
-    <% @array.each do |basket| %>
-    <tr>du
-      <%= product_id = basket[:product_id] %>
-      <% product = Product.find(product_id) %>
-      <td></td>
-      <td><%= product.name %></td>
-      <td><%= product.seller.company_name %></td>
-      <td><%= product.id %></td>
-      <td><%= quantity = basket[:quantity] %></td>
-      <td><%= quantity * product.selling_price %>€</td>
+<% if @array.size == 0 %>
+  <div>Vous n'avez pas de produits dans votre panier</div>
+  <div><%= link_to "découvrez une sélection de produits", products_path %></div>
+<% else %>
+  <div>Contenu de la commande : </div>
+  <table>
+    <tr>
+      <th>Photo</th>
+      <th>Produit</th>
+      <th>Vendeur</th>
+      <th>ID</th>
+      <th>Quantité</th>
+      <th>Prix</th>
     </tr>
+      <% @array.each do |basket| %>
+      <tr>
+        <% product_id = basket[:product_id] %>
+        <% product = Product.find(product_id) %>
+        <td></td>
+        <td><%= product.name %></td>
+        <td><%= product.seller.company_name %></td>
+        <td><%= product.id %></td>
+        <td><%= quantity = basket[:quantity] %></td>
+        <td><%= quantity * product.selling_price %>€</td>
+      </tr>
   <% end %>
+<% end %>
 
 </tr>
 </table>
