@@ -1,5 +1,6 @@
 <%= simple_form_for (@seller) do |f| %>
         <%= f.input :company_name %>
+        <%= f.input :profile_pic, as: :attachinary, label: "Company logo" %>
         <%= f.label :description %>
         <%= f.text_area :description %>
         <%= f.input :delivery_time %>

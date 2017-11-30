@@ -14,7 +14,7 @@ class Seller < ApplicationRecord
   # validates :description, presence: true
   # validates :delivery_time, presence: true
   # validates :delivery_fee, presence: true
-
+  has_attachment :profile_pic
 
 
 
