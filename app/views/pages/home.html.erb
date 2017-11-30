@@ -1,20 +1,34 @@
 <%= render 'shared/banner' %>
-    <div class="row">
-      <% @categories.each do |category| %>
-      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-
-          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url('<%= asset_path("category/#{category.id}.jpg") %>');">
-            <div><%= category.name %></div>
-            <div class="card-description">
-              <% if category.products.count > 1 %>
-                  <h2> <%= category.products.count %> products</h2>
-              <% else %>
-                  <h2> <%= category.products.count %> product</h2>
-              <% end %>
+<div class="container">
+<% @categories.each do |category| %>
+<div class="separator">
+<h2><%= category.name %></h2>
+</div>
+<div class="row">
+  <div class="cards-product">
+  <% category.products.each do |product| %>
+    <div class="col-xs-12 col-sm-4-offset-4">
+      <div class="card-product">
+        <div class="card-product-body" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url('<%= asset_path("product/#{product.id % 10}.jpg") %>'); ">
+            <span class="card-product-category"><%= product.name %></span>
+              <div class="card-product-description">
+                <h2><%= product.description %></h2>
+              </div>
+              <img class="card-product-user avatar" src="images/jad.png">
+              <a class="card-product-link" href="<%= product_path(product) %>"></a>
+        </div>
+        <div class="card-product-footer">
+           <!--  <p><strong>Category: </strong><%= product.category.name %></p> -->
+           <p><strong>Prix: </strong><%= product.selling_price %> euros</p>
+            <div class="controls">
+              <i id="<%= product.id %>" class="fa fa-cart-plus" aria-hidden="true"></i>
             </div>
-            <a class="card-link" href="<%= category_path(category) %>" ></a>
-          </div>
-
+        </div>
       </div>
-      <% end %>
     </div>
+  <% end %>
+</div>
+</div>
+<% end %>
+</div>
+
