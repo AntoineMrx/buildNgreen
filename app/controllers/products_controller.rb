@@ -17,13 +17,10 @@ class ProductsController < ApplicationController
   end
 
   def update
-
     @product.update(product_params)
     unless request.referrer == seller_url(current_seller)
       redirect_to @product
     end
-
-
   end
 
   def create
@@ -44,6 +41,6 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-     params.require(:product).permit(:name, :description, :stock, :material, :color, :size, :weight, :selling_price, :retail_price, :vat, :seller_id, :category_id)
+     params.require(:product).permit(:name, :description, :stock, :material, :color, :size, :weight, :selling_price, :retail_price, :vat, :seller_id, :category_id, photos: [])
   end
 end
