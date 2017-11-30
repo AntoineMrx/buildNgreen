@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
 
+
+
+
   get 'baskets/show'
 
   mount Attachinary::Engine => "/attachinary"
 
   devise_for :sellers, controllers: { registrations: "registrations" }
-  devise_for :buyers, controllers: { registrations: "registrations" }
+  devise_for :buyers, controllers: { registrations: "registrations", omniauth_callbacks: 'buyers/omniauth_callbacks' }
 
   resources :buyers do
     resources :orders, only: [:new]
