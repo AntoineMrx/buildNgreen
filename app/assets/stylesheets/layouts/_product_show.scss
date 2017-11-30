@@ -1,28 +1,49 @@
 #titre{
   margin-bottom: 30px;
   text-align: center;
+  text-shadow: 0.8px 0.8px #ccc;
 }
 
 #description{
+  font-family: 'Roboto', sans-serif;
+  text-shadow: 0.8px 0.8px #ccc;
+  }
+
+#price{
   background-color: white;
-
-
+  // font-family: 'Roboto', sans-serif;
+  text-shadow: 0.8px 0.8px #ccc;
 }
 
-#category{
-  background-color: white;
-}
+// #id{
+//   height: 500;
+//   width: :
+// }
 
 .row{
   padding-right: 30px;
   padding-left: 10px;
 }
 
-#prix{
+#category{
   list-style: none;
+  background-color: white;
+  color: #5f5f5f;
+  font-style: italic;
+  font-size:small;
 }
 
 .form-group{
   display: flex;
+}
+
+
+#sel1{
+  color: #99CC00;
+}
+
+.btn-primary{
+  background-color: #99CC00
+
 }
 
