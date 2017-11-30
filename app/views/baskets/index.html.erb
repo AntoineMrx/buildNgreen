@@ -1,49 +1,76 @@
-<h1>Mon panier</h1>
-
-<% if @array.size == 0 && @order.nil? %>
-  <div>Vous n'avez pas de produits dans votre panier</div>
-  <div><%= link_to "découvrez une sélection de produits", products_path %></div>
-<% else %>
-  <div>Contenu de la commande : </div>
-  <table>
-    <tr>
-      <th>Photo</th>
-      <th>Produit</th>
-      <th>Vendeur</th>
-      <th>ID</th>
-      <th>Quantité</th>
-      <th>Prix</th>
-      <th></th>
-    </tr>
-    <% if buyer_signed_in? %>
-      <% @order.baskets.each do |basket| %>
-      <tr>
-        <% product_id = basket[:product_id] %>
-        <% product = Product.find(product_id) %>
-        <td></td>
-        <td><%= product.name %></td>
-        <td><%= product.seller.company_name %></td>
-        <td><%= product.id %></td>
-        <td><%= quantity = basket[:quantity] %></td>
-        <td><%= quantity * product.selling_price %>€</td>
-        <td><%= link_to "Delete", basket_path(basket), method: :delete %></td>
-      </tr>
-      <% end %>
+<div class="container">
+  <div class="basket">
+    <h1>Mon panier</h1>
+    <% if @array.size == 0 && @order.nil? %>
+      <div>Vous n'avez pas de produits dans votre panier</div>
+      <div><%= link_to "découvrez une sélection de produits", products_path %></div>
     <% else %>
-      <% @array.each do |basket| %>
+    <table>
       <tr>
-        <% product_id = basket[:product_id] %>
-        <% product = Product.find(product_id) %>
-        <td></td>
-        <td><%= product.name %></td>
-        <td><%= product.seller.company_name %></td>
-        <td><%= product.id %></td>
-        <td><%= quantity = basket[:quantity] %></td>
-        <td><%= quantity * product.selling_price %>€</td>
-        <td></td>
+        <th></th>
+        <th class="th-header">Produit</th>
+        <th class="th-header">Vendeur</th>
+        <th class="th-header">Ref.</th>
+        <th class="th-header">Quantité</th>
+        <th class="th-header">Prix</th>
+        <th class="th-header"></th>
       </tr>
+      <% if buyer_signed_in? %>
+        <% @order.baskets.each do |basket| %>
+        <tr>
+          <% product_id = basket[:product_id] %>
+          <% product = Product.find(product_id) %>
+          <td><%= image_tag "product/#{(1..9).to_a.sample}.jpg", class:"table-pic" %></td>
+          <td><%= product.name %></td>
+          <td><%= product.seller.company_name %></td>
+          <td class="figures"><%= product.id %></td>
+          <td class="figures"><%= quantity = basket[:quantity] %></td>
+          <td class="figures"><%= quantity * product.selling_price %>€</td>
+          <td>
+            <%= link_to basket_path(basket), method: :delete do %>
+              <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+        <% end %>
+          </td>
+        </tr>
+        <% end %>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="figures" colspan=2><strong>Total :</strong></td>
+          <td class="figures"><strong><%= Basket.total_price(@order.baskets) %>€</strong></td>
+          <td></td>
+        </tr>
+      <% else %>
+        <% @array.each do |basket| %>
+        <tr>
+          <% product_id = basket[:product_id] %>
+          <% product = Product.find(product_id) %>
+          <td>
+            <div class="table-pic" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url('<%= asset_path("product/#{[product.id % 10, 1].max}.jpg") %>'); "></div>
+          </td>
+          <td><%= product.name %></td>
+          <td><%= product.seller.company_name %></td>
+          <td class="figures"><%= product.id %></td>
+          <td class="figures"><%= quantity = basket[:quantity] %></td>
+          <td class="figures"><%= quantity * product.selling_price %>€</td>
+          <td></td>
+        </tr>
+        <% end %>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="figures" colspan=2><strong>Total :</strong></td>
+          <td class="figures"><strong><%= Basket.total_price(@array) %>€</strong></td>
+          <td></td>
+        </tr>
       <% end %>
     <% end %>
-  <% end %>
-</tr>
-</table>
+      <tr class="figures">
+        <td colspan = 6 class="figures"><div class="btn btn-primary">Valider</div></td>
+      </tr>
+  </table>
+
+</div>
+</div>
