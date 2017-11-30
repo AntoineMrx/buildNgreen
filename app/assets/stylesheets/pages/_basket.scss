@@ -1,11 +1,9 @@
 .basket {
-  background-color: #FAFAFA;
+  background-color: $white;
   padding: 20px;
-  color: gray;
-  h1 {
-    text-align: center;
-    margin-bottom: 25px;
-    color: $black;
+  color: $gray;
+  table {
+    margin: 0 auto;
   }
   td, th {
     padding: 5px 10px;

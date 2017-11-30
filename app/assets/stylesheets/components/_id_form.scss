@@ -1,0 +1,24 @@
+.buyer-data {
+  background-color: $white;
+  padding: 20px;
+  color: $gray;
+  table {
+    margin: 0 auto;
+  }
+  td {
+    padding: 5px 10px;
+  }
+  td:first-child{
+    font-weight: 700;
+  }
+  tr{
+    border-bottom: 1px solid #DDD;
+  }
+  tr:last-child {
+    border-top: 1px solid #888;
+    border-bottom: 0;
+  }
+  .figures {
+  text-align: right !important;
+  }
+}

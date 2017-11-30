@@ -1,52 +1,64 @@
 <!-- if logged in buyer, can only access his own profile -->
 <% if @buyer == current_buyer %>
-
-<div>
-  <h1>Mes informations</h1>
-  <table>
-    <tr>
-      <td>First name</td>
-      <td><%= @buyer.first_name %></td>
-    </tr>
-    <tr>
-      <td>Last name</td>
-      <td><%= @buyer.last_name %></td>
-    </tr>
-    <tr>
-      <td>Email</td>
-      <td><%= @buyer.email %></td>
-    </tr>
-    <tr>
-      <td>Address</td>
-      <td><%= @buyer.address %></td>
-    </tr>
-  </table>
-  <%= link_to edit_buyer_path do %>
-    <div class="btn btn-primary">Modifier</div>
-    </div>
-  <% end %>
-<div>
-  <% if @buyer.orders.count == 0 %>
-    <h2>Vous n'avez pas encore de commande :-( </h2>
-    <div> <%= image_tag("/assets/sad_kitten.jpg") %>
-    </div>
-    <div>
-      <%= link_to "Découvrez nos meilleurs produits", root_path %>
-    </div>
-  <% else %>
-    <% @buyer.orders.each do |order| %>
-      <div>
-        <div> <%= order.order_date %> </div>
-        <div> Commande N°<%= order.id %> </div>
-        <div> <%= order.sum %>€ </div>
-        <!-- Mettre une mise en forme pour le statut (ou des pictos) ? ex : vert, rouge, gris -->
-        <div> <%= order.status %> </div>
-        <div> <%= link_to "Détails", order_path(order), class:"btn btn-primary" %> </div>
+<div class="container">
+  <div class="buyer-data">
+    <h1>Mes informations</h1>
+    <table>
+      <tr>
+        <td>First name</td>
+        <td><%= @buyer.first_name %></td>
+      </tr>
+      <tr>
+        <td>Last name</td>
+        <td><%= @buyer.last_name %></td>
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td><%= @buyer.email %></td>
+      </tr>
+      <tr>
+        <td>Address</td>
+        <td><%= @buyer.address %></td>
+      </tr>
+      <tr>
+        <td colspan="2" class="figures">
+          <%= link_to edit_buyer_path do %>
+          <div class="btn btn-success">Modifier</div>
+          <% end %>
+        </td>
+      </tr>
+    </table>
+  <div>
+    <% if @buyer.orders.count == 0 %>
+      <h2>Vous n'avez pas encore de commande :-( </h2>
+      <div> <%= image_tag("/assets/sad_kitten.jpg") %>
       </div>
+      <div>
+        <%= link_to "Découvrez nos meilleurs produits", root_path %>
+      </div>
+    <% else %>
+      <table>
+        <tr>
+          <th class="th-header">Date</th>
+          <th class="th-header">N° commande</th>
+          <th class="th-header">Montant</th>
+          <th class="th-header">Statut</th>
+          <th></th>
+        </tr>
+      <% @buyer.orders.where.not(status:"initiée").each do |order| %>
+        <tr>
+          <td> <%= order.order_date %> </td>
+          <td> Commande N°<%= order.id %> </td>
+          <td> <%= order.sum %>€ </td>
+          <!-- Mettre une mise en forme pour le statut (ou des pictos) ? ex : vert, rouge, gris -->
+          <td> <%= order.status %> </td>
+          <td> <%= link_to "Détails", order_path(order), class:"btn btn-success" %> </td>
+        </tr>
+      <% end %>
+      </table>
     <% end %>
-  <% end %>
+  </div>
 </div>
-
 <!-- else has ACCESS DENIED -->
 <% else %>
 
