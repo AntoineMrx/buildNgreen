@@ -30,7 +30,32 @@
   </div>
 
   <div class="form-inputs">
-    <%= f.input :photos, as: :attachinary, label: "Images" %>
+    <%= f.input :photo_1 %>
+    <%= f.input :photo_1_cache, as: :hidden %>
+
+    <% if !current_page?(new_seller_product_path) %>
+      <% if !product.photo_1.nil?%>
+      <%= cl_image_tag @product.photo_1.url(:thumbnail) %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="form-inputs">
+    <%= f.input :photo_2 %>
+    <%= f.input :photo_2_cache, as: :hidden %>
+    <% if !current_page?(new_seller_product_path) %>
+      <% if !product.photo_2.nil?%>
+        <%= cl_image_tag @product.photo_2.url(:thumbnail) %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="form-inputs">
+    <%= f.input :photo_3 %>
+    <%= f.input :photo_3_cache, as: :hidden %>
+    <% if !current_page?(new_seller_product_path) %>
+      <% if !product.photo_3.nil?%>
+        <%= cl_image_tag @product.photo_3.url(:thumbnail) %>
+      <% end %>
+    <% end %>
   </div>
 
   <div class="form-actions">

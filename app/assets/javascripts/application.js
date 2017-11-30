@@ -5,6 +5,7 @@
 //= require jquery-fileupload/basic
 //= require cloudinary/jquery.cloudinary
 //= require attachinary
+//= require attachinary_template
 
 
 document.querySelector(".fa-cart-plus").addEventListener("click", function() {

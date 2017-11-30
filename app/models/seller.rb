@@ -1,6 +1,8 @@
 class Seller < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  mount_uploader :company_logo, PhotoUploader
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :products
@@ -14,7 +16,7 @@ class Seller < ApplicationRecord
   # validates :description, presence: true
   # validates :delivery_time, presence: true
   # validates :delivery_fee, presence: true
-  has_attachment :profile_pic
+
 
 
 
