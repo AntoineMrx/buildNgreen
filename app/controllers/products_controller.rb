@@ -5,32 +5,32 @@ class ProductsController < ApplicationController
   end
 
   def show
-
+    @seller = @product.seller
   end
 
   def new
     @product = Product.new
+    @seller = Seller.find(params[:seller_id])
   end
 
   def edit
   end
 
   def update
+
     @product.update(product_params)
+    unless request.referrer == seller_url(current_seller)
+      redirect_to @product
+    end
+
+
   end
 
   def create
     @product = Product.new(product_params)
-
-    respond_to do |format|
-      if @product.save
-        format.html { redirect_to @product, notice: 'product was successfully created.' }
-        format.json { render :show, status: :created, location: @product }
-      else
-        format.html { render :new }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
-      end
-    end
+    @product.seller = Seller.find(params[:seller_id])
+    @product.save
+    redirect_to @product
   end
 
   def destroy

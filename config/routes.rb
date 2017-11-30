@@ -9,8 +9,10 @@ Rails.application.routes.draw do
     resources :orders, only: [:new]
   end
 
-  resources :sellers
-  resources :products
+  resources :sellers do
+    resources :products, only: [:new, :create, :edit, :update, :destroy]
+  end
+  resources :products, only: [:index, :show, :edit, :update]
   resources :categories
   resources :orders, only: [:index, :show, :edit]
   resources :baskets

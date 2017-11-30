@@ -1,7 +1,7 @@
 <h1>Product Edit</h1>
 <h1><%= @product.name %></h1>
 
-<%= render 'form', product: @product %>
+<%= render 'form', product: @product, seller: @seller %>
 
 <%= link_to 'Show', @product , class:'btn btn-primary' %>
 <%= link_to 'Back', products_path, class: 'btn btn-primary' %>
