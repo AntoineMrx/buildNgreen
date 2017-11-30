@@ -1,6 +1,39 @@
+h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: $black;
+}
+
 h2 {
 font-family: $body-font;
 font-weight: bold;
 // text-align: center;
 
+}
+
+td, th {
+    padding: 5px 10px;
+}
+
+.th-header {
+    position: relative;
+}
+
+.th-header:after {
+    content:'';
+    height: 2px;
+    background: $green;
+    position: absolute;
+    bottom: 1px;
+    left: 8px;
+    right: 8px;
+}
+
+.th-header:last-child:after {
+    height: 0;
+    width: 0;
+  }
+
+tr:first-child {
+  border-bottom: 0;
 }

@@ -27,3 +27,8 @@ end
 
 gem 'devise'
 gem 'faker'
+gem 'cloudinary'
+gem 'carrierwave', '~> 0.11.2'
+gem 'attachinary', github: 'assembler/attachinary'
+gem 'jquery-fileupload-rails'
+gem 'coffee-rails'

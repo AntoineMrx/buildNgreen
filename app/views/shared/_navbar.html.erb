@@ -1,7 +1,8 @@
 <div class="navbar-wagon">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "logo.svg" %>
+  <i class="fa fa-envira" aria-hidden="true"></i>
+   <!--  <%= image_tag "logo.svg" %> -->
   <% end %>
 
   <!-- Right Navigation -->
@@ -26,9 +27,13 @@
       </div>
       <!-- Fin du Dropdown -->
 
+      <%= link_to "Produits", products_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Mon compte", buyer_path(current_buyer), class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Mes commandes", buyer_path(current_buyer), class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Mon panier", baskets_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to baskets_path, class: "navbar-wagon-item navbar-wagon-link" do %>
+        <div>Mon panier</div>
+        <div><%= Basket.items(current_buyer.id) %></div>
+      <% end %>
       <div class="navbar-wagon-item navbar-wagon-link">Bonjour <%= current_buyer.first_name %> ! <br>
         <%= link_to destroy_buyer_session_path, method: :delete do %>
           <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Deconnexion") %>
@@ -63,8 +68,10 @@
       <%= link_to "Produits", products_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "S'inscrire", new_buyer_registration_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Se connecter", new_buyer_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Panier", baskets_path, class: "navbar-wagon-item navbar-wagon-link" %>
-
+      <%= link_to baskets_path, class: "navbar-wagon-item navbar-wagon-link" do %>
+        <div>Panier</div>
+        <div><%= "(#{session[:basket].length})" unless session[:basket].nil? %></div>
+      <% end %>
       </div>
     <% end %>
   </div>

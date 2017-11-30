@@ -71,6 +71,15 @@
   </div>
 
 
+  <div id="description">
+    <ul>
+        <li><h4>Description:</h4> <%= @product.description %></li>
+    </ul>
+  </div>
+
+  <div>
+    <%= link_to 'Edit Product', edit_seller_product_path(@seller), class: "btn btn-warning" %>
+  </div>
 
   <!--   <div>
       <%= link_to 'Edit Product', edit_product_path(@product), class: "btn btn-warning" %>

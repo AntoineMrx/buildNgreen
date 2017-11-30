@@ -15,11 +15,12 @@ class ProductsController < ApplicationController
   end
 
   def show
-
+    @seller = @product.seller
   end
 
   def new
     @product = Product.new
+    @seller = Seller.find(params[:seller_id])
   end
 
   def edit
@@ -27,20 +28,16 @@ class ProductsController < ApplicationController
 
   def update
     @product.update(product_params)
+    unless request.referrer == seller_url(current_seller)
+      redirect_to @product
+    end
   end
 
   def create
     @product = Product.new(product_params)
-
-    respond_to do |format|
-      if @product.save
-        format.html { redirect_to @product, notice: 'product was successfully created.' }
-        format.json { render :show, status: :created, location: @product }
-      else
-        format.html { render :new }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
-      end
-    end
+    @product.seller = Seller.find(params[:seller_id])
+    @product.save
+    redirect_to @product
   end
 
   def destroy
@@ -54,6 +51,6 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-     params.require(:product).permit(:name, :description, :stock, :material, :color, :size, :weight, :selling_price, :retail_price, :vat, :seller_id, :category_id)
+     params.require(:product).permit(:name, :description, :stock, :material, :color, :size, :weight, :selling_price, :retail_price, :vat, :seller_id, :category_id, :photo_1, :photo_1_cache, :photo_2, :photo_2_cache, :photo_3, :photo_3_cache)
   end
 end

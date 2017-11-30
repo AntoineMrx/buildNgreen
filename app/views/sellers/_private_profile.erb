@@ -58,7 +58,7 @@
 
   <div id="products" class="tab-pane fade">
     <h3>Products</h3>
-    <%= link_to "Add Product", new_product_path, class:"btn btn-primary" %>
+    <%= link_to "Add Product", new_seller_product_path(@seller), class:"btn btn-primary" %>
     <% if @seller.products.count == 0 %>
       <h2>Vous n'avez pas encore de commande :-( </h2>
       <div> <%= image_tag("sad_kitten.jpg") %>

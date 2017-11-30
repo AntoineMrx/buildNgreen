@@ -2,9 +2,16 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require_tree .
+//= require jquery-fileupload/basic
+//= require cloudinary/jquery.cloudinary
+//= require attachinary
+//= require attachinary_template
 
 
-document.querySelector(".fa-cart-plus").addEventListener("click", function() {
+let buttons = document.querySelectorAll(".fa-cart-plus")
+
+for(var i = 0; i < buttons.length; i++) {
+ buttons[i].addEventListener("click", function() {
   // Do something (callback)
   fetch("/add_item", {
     method: "POST",
@@ -16,3 +23,4 @@ document.querySelector(".fa-cart-plus").addEventListener("click", function() {
     credentials: 'same-origin'
   })
 });
+}
