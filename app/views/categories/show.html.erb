@@ -1,8 +1,11 @@
 <div class="container-fluid">
-<h1 ><%= @category.name %></h1>
+<div class="separator">
+<h2 ><%= @category.name %></h2>
+</div>
 
-
+<div class="separator">
 <%= @category.description %>
+</div>
 
 <div class="row">
       <% @category.products.each do |product| %>
@@ -15,7 +18,7 @@
                 <span class="card-product-category"><%= product.name %></span>
             <% end %>
             <div class="card-product-description">
-              <h2><%= product.description %></h2>
+              <h2><%= product.category.name %></h2>
             </div>
             <img class="card-product-user avatar" src="images/jad.png">
             <a class="card-product-link" href="<%= product_path(product) %>"></a>

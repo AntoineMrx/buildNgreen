@@ -11,16 +11,18 @@ Rails.application.routes.draw do
   end
 
   resources :sellers do
-    resources :products, only: [:index, :new, :create, :edit, :update, :destroy]
+    resources :products, only: [:index, :new, :create, :edit, :update]
     resources :orders, only: [:index, :show, :edit, :update]
   end
-  resources :products, only: [:index, :show, :edit, :update]
+  resources :products, only: [:index, :show, :edit, :update, :destroy]
   resources :categories
   resources :orders, only: [:index, :show, :edit]
   resources :baskets
 
+
   post "add_item/", to: "baskets#add_item"
   post "destroy_cookies_item/:product_id", to: "baskets#destroy_cookies_item", as: 'cookies'
+
   get "search", to: "products#search"
 
   root to: 'pages#home'

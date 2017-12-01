@@ -1,0 +1,27 @@
+fieldset {
+  border: medium none !important;
+  margin: 0 0 10px;
+  min-width: 100%;
+  padding: 0;
+  width: 100%;
+}
+
+#container-form {
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.form-group {
+  width: 100%;
+}
+
+label {
+  width: 200px;
+  margin: 0 10px 0 0;
+}
+
+textarea {
+  width: 100%;
+}

@@ -1,5 +1,6 @@
-<%= simple_form_for (@seller) do |f| %>
-        <div class="form-inputs">
+<div id="container-form">
+    <%= simple_form_for (@seller) do |f| %>
+        <div class="form-group">
           <%= f.input :company_logo, label: "Logo de Société" %>
           <%= f.input :company_logo_cache, as: :hidden %>
           <% if !current_page?(new_seller_path) %>
@@ -7,20 +8,42 @@
               <%= cl_image_tag @seller.company_logo.url(:thumbnail) %>
             <% end %>
           <% end %>
+
         </div>
-        <%= f.input :company_name, label: "Nom de Société" %>
-        <%= f.label :description %>
-        <%= f.text_area :description %>
-        <%= f.input :website, label: "Site Web"  %>
-        <%= f.input :last_name, label: "Nom de famille" %>
-        <%= f.input :first_name, label: "Prénom" %>
-        <%= f.input :email %>
-        <%= f.input :address, label: "Adresse" %>
-        <%= f.input :delivery_time, label: "Délai de livraison" %>
-        <%= f.input :delivery_fee, label: "Frais de livraison" %>
-        <%= f.input :delivery_free_from, label: "Livraison gratuite à partir de :" %>
+        <div class="form-group">
+          <%= f.input :company_name, label: "Nom de Société" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :description %>
+          <%= f.text_area :description %>
+        </div>
+        <div class="form-group">
+          <%= f.input :website, label: "Site Web"  %>
+        </div>
+        <div class="form-group">
+          <%= f.input :last_name, label: "Nom de famille" %>
+        </div>
+        <div class="form-group">
+          <%= f.input :first_name, label: "Prénom" %>
+        </div>
+        <div class="form-group">
+          <%= f.input :email %>
+        </div>
+        <div class="form-group">
+          <%= f.input :address, label: "Adresse" %>
+        </div>
+        <div class="form-group">
+          <%= f.input :delivery_time, label: "Délai de livraison" %>
+        </div>
+        <div class="form-group">
+          <%= f.input :delivery_fee, label: "Frais de livraison" %>
+        </div>
+        <div class="form-group">
+          <%= f.input :delivery_free_from, label: "Livraison gratuite à partir de :" %>
 
-
-
+        </div>
+        <div class="form-group">
         <%= f.submit "Confirmer", class: "btn btn-primary" %>
+        </div>
         <% end %>
+</div>

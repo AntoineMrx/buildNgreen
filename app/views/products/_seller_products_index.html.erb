@@ -8,15 +8,16 @@
         <%= link_to "Découvrez nos meilleurs produits", root_path %>
       </div>
     <% else %>
-       <table class="table table-sm">
+       <table>
         <thead>
           <tr>
-            <th># Réf</th>
-            <th>Titre</th>
-            <th>Prix barré</th>
-            <th>Prix de vente</th>
-            <th>Quantité</th>
-            <th>Détails</th>
+            <th class="th-header" ># Réf</th>
+            <th class="th-header" >Titre</th>
+            <th class="th-header" >Prix barré</th>
+            <th class="th-header" >Prix de vente</th>
+            <th class="th-header" >Quantité</th>
+            <th class="th-header" >Détails</th>
+            <!-- <th class="th-header" ></th> -->
           </tr>
         </thead>
         <tbody>
@@ -34,6 +35,7 @@
               <%= link_to "Détails", product_path(product), class:"btn btn-primary" %>
               <%= f.button :submit, "Mettre à jour" %>
             </td>
+           <!--  <td> <%= link_to "supprimer", product_path(product), method: :delete, data: { confirm: "Êtes-vous sûr(e)?" } %></td> -->
           </tr>
           <% end %>
         <% end %>
