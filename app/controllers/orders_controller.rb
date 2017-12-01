@@ -13,7 +13,11 @@ before_action :load_order, only: [:show, :update, :destroy, :edit, :update]
   end
 
   def update
-    @order.update(order_params)
+    @order.update(
+      status: "validation en cours",
+      address: @order.buyer.address,
+      order_date: Time.now
+      )
   end
 
   private
@@ -23,6 +27,6 @@ before_action :load_order, only: [:show, :update, :destroy, :edit, :update]
   end
 
   def order_params
-    params.require(:order).permit(:status)
+    params.require(:order).permit(:status, :buyer_id)
   end
 end

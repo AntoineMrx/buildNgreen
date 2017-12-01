@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   devise_for :sellers, controllers: { registrations: "registrations" }
 
   resources :buyers do
-    resources :orders, only: [:new]
+    resources :orders, only: [:new, :update]
   end
 
   resources :sellers do
@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   end
   resources :products, only: [:index, :show, :edit, :update]
   resources :categories
-  resources :orders, only: [:index, :show, :edit]
+  resources :orders, only: [:index, :show, :edit, :update]
   resources :baskets
 
   post "add_item/", to: "baskets#add_item"

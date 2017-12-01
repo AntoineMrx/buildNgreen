@@ -14,6 +14,7 @@ class BasketsController < ApplicationController
   def add_item
     puts "ca commence!"
     product_id = params[:id]
+    product = Product.find(product_id)
     quantity = params[:quantity]
     if buyer_signed_in?
       order = order_en_cours
@@ -21,7 +22,7 @@ class BasketsController < ApplicationController
       if item_in_basket?(order, product_id)
         iterate_item(order, product_id, quantity)
       else
-        Basket.create(order_id: order.id, product_id: product_id, quantity: 1)
+        Basket.create(order_id: order.id, product_id: product_id, quantity: 1, product_price: product.selling_price)
       end
     elsif session[:basket].nil?
       session[:basket] = {}
