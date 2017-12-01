@@ -1,4 +1,5 @@
 class Buyers::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+
   def facebook
     buyer = Buyer.find_for_facebook_oauth(request.env['omniauth.auth'])
 

@@ -12,14 +12,18 @@
         <ol class="carousel-indicators">
           <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
           <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="2"></li>
         </ol>
         <!-- Wrapper for slides -->
         <div class="carousel-inner" id="images" role="listbox">
           <div class="item active">
-            <%= image_tag  "beton_chanvre.jpg"%>
+            <%= cl_image_tag @product.photo_1.url %>
           </div>
           <div class="item">
-            <%= image_tag"lumière.jpg" %>
+            <%= cl_image_tag @product.photo_2.url %>
+          </div>
+          <div class="item">
+            <%= cl_image_tag @product.photo_3.url %>
           </div>
         </div>
 
@@ -51,35 +55,33 @@
               <li>Description: <%= @product.description %></li>
             </div>
             <div class="form-group">
-              <label for="sel1">Select quantity:</label>
-              <select class="form-control" id="sel1">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
+              <label for="sel1">Quantité :</label>
+              <select class="form-control" id="quantity">
+                <% 10.times do |i| %>
+                <option><%= i + 1 %></option>
+                <% end %>
               </select>
             </div>
+
            </ul>
            <div class="row">
         <div class="col-md-6 col-md-offset-5" >
-          <%= link_to 'Add to cart', product_path(@product), class: "btn btn-primary" %>
+          <div class= "add-basket btn btn-success", id="<%= @product.id %>">Ajouter au panier</div>
+
         </div>
       </div>
-      </div>
 
-    </div>
-
-  </div>
-
-
-  <div id="description">
-    <ul>
-        <li><h4>Description:</h4> <%= @product.description %></li>
-    </ul>
-  </div>
-
-  <div>
+        <% @seller.products.sample(3).each do |product|%>
+        <%= link_to product_path(product) do %>
+          <%= cl_image_tag product.photo_1.url(:preview) %>
+          <% end %>
+        <% end %>
+<div>
     <%= link_to 'Edit Product', edit_seller_product_path(@seller), class: "btn btn-warning" %>
   </div>
+    </div>
+
+
 
   <!--   <div>
       <%= link_to 'Edit Product', edit_product_path(@product), class: "btn btn-warning" %>
