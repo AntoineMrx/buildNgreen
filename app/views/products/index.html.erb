@@ -1,3 +1,6 @@
+  <% if current_page?(seller_products_path(current_seller)) %>
+    <%= render "seller_products_index" %>
+  <% else %>
 
    <div class="container-fluid">
     <div class="separator">
@@ -27,3 +30,5 @@
 
       </div>
     </div>
+
+<% end %>
