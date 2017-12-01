@@ -4,7 +4,7 @@
       <div id="titre" style="border-bottom: 3px solid lightgrey "><h1><%=  @product.name %></h1></div>
     </div>
 
-
+  <div>
 
     <div class="col-md-6" >
   <!-- image du produit vers la gauche (choisi une image par defaut pour tout les produits-->
@@ -64,7 +64,7 @@
               <li>Description: <%= @product.description %></li>
             </div>
             <div class="form-group">
-              <label for="sel1">Quantité :</label>
+              <label for="sel1">Quantité:</label>
               <select class="form-control" id="quantity">
                 <% 10.times do |i| %>
                 <option><%= i + 1 %></option>
@@ -87,6 +87,6 @@
         <% end %>
     </div>
   </div>
-
+  </div>
 </div>
 
