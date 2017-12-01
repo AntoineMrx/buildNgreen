@@ -19,8 +19,8 @@ Rails.application.routes.draw do
   resources :orders, only: [:index, :show, :edit]
   resources :baskets
 
-  post "add_item/:product_id", to: "baskets#add_item"
-  post "destroy_cookies_item", to: "baskets#destroy_cookies_item"
+  post "add_item/", to: "baskets#add_item"
+  post "destroy_cookies_item/:product_id", to: "baskets#destroy_cookies_item", as: 'cookies'
   get "search", to: "products#search"
 
   root to: 'pages#home'
