@@ -1,4 +1,13 @@
 <%= simple_form_for (@seller) do |f| %>
+        <div class="form-inputs">
+          <%= f.input :company_logo %>
+          <%= f.input :company_logo_cache, as: :hidden %>
+          <% if !current_page?(new_seller_path) %>
+            <% if !@seller.company_logo.nil?%>
+              <%= cl_image_tag @seller.company_logo.url(:thumbnail) %>
+            <% end %>
+          <% end %>
+        </div>
         <%= f.input :company_name %>
         <%= f.label :description %>
         <%= f.text_area :description %>
@@ -13,5 +22,5 @@
 
 
 
-        <%= f.submit "Edit", class: "btn btn-primary" %>
+        <%= f.submit "Submit", class: "btn btn-primary" %>
         <% end %>

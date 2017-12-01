@@ -13,11 +13,11 @@ class Basket < ApplicationRecord
   end
 
   def self.items(buyer_id)
-    order = Buyer.find(buyer_id).orders.where(status:"initiée")[0]
-    nb = order.baskets.size
-    if nb == 0
+    order = Buyer.find(buyer_id).orders.where(status:"initiée")
+    if order[0].nil?
       return ""
     else
+      nb = order[0].baskets.size
       return "(#{nb})"
     end
   end
