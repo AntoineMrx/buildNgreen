@@ -8,7 +8,7 @@
 //= require attachinary_template
 
 
-let buttons = document.querySelectorAll(".fa-cart-plus");
+var buttons = document.querySelectorAll(".fa-cart-plus");
 
 for(var i = 0; i < buttons.length; i++) {
  buttons[i].addEventListener("click", function() {
@@ -25,7 +25,7 @@ for(var i = 0; i < buttons.length; i++) {
 });
 }
 
-let addItem = document.querySelector(".add-basket");
+var addItem = document.querySelector(".add-basket");
 
 if (addItem) {
   addItem.addEventListener("click", function() {
