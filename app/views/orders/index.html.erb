@@ -1,2 +1,42 @@
-<h1>Orders#index</h1>
-<p>Find me in app/views/orders/index.html.erb</p>
+<div>
+    <% if current_seller.orders.count == 0 %>
+      <h2>Vous n'avez pas encore de commande :-( </h2>
+      <div> <%= image_tag("/assets/sad_kitten.jpg") %>
+      </div>
+
+    <% else %>
+      <table>
+        <thead>
+          <tr>
+            <th class="th-header" >#-Ref</th>
+            <th class="th-header" >Date</th>
+            <th class="th-header" >First Name</th>
+            <th class="th-header" >Last Name</th>
+            <th class="th-header" >Delivery Address</th>
+            <th class="th-header" >Price</th>
+            <th class="th-header" >Status</th>
+            <th class="th-header" >View Details</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% current_seller.orders.order("created_at DESC").each do |order| %>
+          <%= simple_form_for(order) do |f| %>
+          <%= f.error_notification %>
+          <tr>
+            <td><%= order.id %></td>
+            <td><%= order.order_date %></td>
+            <td><%= order.buyer.first_name %></td>
+            <td><%= order.buyer.last_name %></td>
+            <td><%= order.buyer.address %></td>
+            <td><%= order.sum %></td>
+            <td><%= f.select :status, options_for_select(["En attente de validation", "Validé", "Livraison en cours", "Livré", "Annulé"]) %>
+            <%= f.button :submit %>
+            </td>
+            <td><%= link_to "Détails", order_path(order), class:"btn btn-success" %></td>
+          </tr>
+          <% end %>
+        <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
