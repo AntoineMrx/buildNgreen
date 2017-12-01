@@ -64,7 +64,7 @@
               <li>Description: <%= @product.description %></li>
             </div>
             <div class="form-group">
-              <label for="sel1">Quantité :</label>
+              <label for="sel1">Quantité:</label>
               <select class="form-control" id="quantity">
                 <% 10.times do |i| %>
                 <option><%= i + 1 %></option>
@@ -72,19 +72,25 @@
               </select>
             </div>
 
-           </ul>
-           <div class="row">
-        <div class="col-md-6 col-md-offset-5" >
-          <div class= "add-basket btn btn-success", id="<%= @product.id %>">Ajouter au panier</div>
 
-        </div>
-      </div>
+            </ul>
+            <div class="row">
+              <div class="col-md-6 col-md-offset-5" >
+                <div class= "add-basket btn btn-success", id="<%= @product.id %>">Ajouter au panier</div>
+              </div>
+            </div>
+            <div id="other-products">
+            <%= "Autre produits du vendeur:" %>
+            </div>
+            <% @seller.products.sample(3).each do |product|%>
+              <%= link_to product_path(product) do %>
+                <%= cl_image_tag product.photo_1.url(:preview) %>
+              <% end %>
+            <% end %>
+<div>
+    <%= link_to 'Edit Product', edit_seller_product_path(@seller), class: "btn btn-warning" %>
+  </div>
 
-        <% @seller.products.sample(3).each do |product|%>
-        <%= link_to product_path(product) do %>
-          <%= cl_image_tag product.photo_1.url(:preview) %>
-          <% end %>
-        <% end %>
     </div>
   </div>
 
