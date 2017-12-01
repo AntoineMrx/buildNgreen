@@ -42,9 +42,9 @@
 
       <!-- If I am a seller -->
     <% elsif seller_signed_in? %>
-      <%= link_to "Mon compte", seller_path(current_seller), class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Mes commandes", seller_path(current_seller), class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Mes produits", seller_path(current_seller), class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Mon compte", seller_path(current_seller, anchor: "info"), class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Mes commandes", seller_orders_path(current_seller), class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Mes produits", seller_products_path(current_seller), class: "navbar-wagon-item navbar-wagon-link" %>
       <div class="navbar-wagon-item navbar-wagon-link"><%= current_seller.company_name %> <br>
         <%= link_to destroy_seller_session_path, method: :delete do %>
           <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Deconnexion") %>

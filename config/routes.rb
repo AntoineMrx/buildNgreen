@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   end
 
   resources :sellers do
-    resources :products, only: [:new, :create, :edit, :update, :destroy]
+    resources :products, only: [:index, :new, :create, :edit, :update, :destroy]
+    resources :orders, only: [:index, :show, :edit, :update]
   end
   resources :products, only: [:index, :show, :edit, :update]
   resources :categories

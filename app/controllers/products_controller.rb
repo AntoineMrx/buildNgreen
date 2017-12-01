@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
     @word = params[:word]
     @productList = []
     Product.all.each do |product|
-      @productList << product if product.name.downcase.include?(@word)
+      @productList << product if product.name.downcase.include?(@word.downcase)
     end
     p @productList
 
@@ -28,7 +28,7 @@ class ProductsController < ApplicationController
 
   def update
     @product.update(product_params)
-    unless request.referrer == seller_url(current_seller)
+    unless request.referrer == seller_url
       redirect_to @product
     end
   end

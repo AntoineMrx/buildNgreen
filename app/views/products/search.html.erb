@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
     <div class="separator">
     <h2>Résultats pour "<%= params[:word] %>"</h2>
     </div>
@@ -7,16 +7,15 @@
       <div class="col-xs-12 col-sm-4">
         <div class="card-product">
           <div class="card-product-body" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url('<%= asset_path("product/#{product.id % 10}.jpg") %>'); ">
-            <span class="card-product-category"><%= product.name %></span>
+            <span class="card-product-category"><%= product.name.first(30) %>...</span>
             <div class="card-product-description">
-              <h2><%= product.description %></h2>
+              <h2><%= product.category.name %></h2>
             </div>
             <img class="card-product-user avatar" src="images/jad.png">
             <a class="card-product-link" href="<%= product_path(product) %>"></a>
           </div>
-          <div class="card-product-footer">
-           <!--  <p><strong>Category: </strong><%= product.category.name %></p> -->
-           <p><strong>Prix: </strong><%= product.selling_price %> euros</p>
+         <div class="card-product-footer">
+           <p><i class="fa fa-tags" aria-hidden="true"></i> <strong><%= product.selling_price %> euros</strong></p>
             <div class="controls">
                 <i id="<%= product.id %>" class="fa fa-cart-plus" aria-hidden="true"></i>
             </div>
