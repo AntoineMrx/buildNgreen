@@ -2,7 +2,7 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :name %>
+    <%= f.input :name, label: "Titre"  %>
   </div>
 
     <div class="form-inputs">
@@ -10,23 +10,23 @@
   </div>
 
   <div class="form-inputs">
-    <%= f.input :category_id, collection: Category.all %>
+    <%= f.input :category_id, label: "Catégorie", collection: Category.all %>
   </div>
 
   <div class="form-inputs">
-    <%= f.input :selling_price %>
+    <%= f.input :selling_price, label: "Prix de vente TTC" %>
   </div>
 
   <div class="form-inputs">
-    <%= f.input :retail_price %>
+    <%= f.input :retail_price, label: "Prix barré" %>
   </div>
 
   <div class="form-inputs">
-    <%= f.input :vat %>
+    <%= f.input :vat, label: "TVA %" %>
   </div>
 
   <div class="form-inputs">
-    <%= f.input :stock %>
+    <%= f.input :stock, label: "Quantité" %>
   </div>
 
   <div class="form-inputs">
@@ -59,7 +59,7 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, "Ajouter Produit" %>
   </div>
 
 <% end %>
