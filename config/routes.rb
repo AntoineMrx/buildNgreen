@@ -3,8 +3,8 @@ Rails.application.routes.draw do
 
   mount Attachinary::Engine => "/attachinary"
 
-  devise_for :sellers, controllers: { registrations: "registrations" }
   devise_for :buyers, controllers: { registrations: "registrations", omniauth_callbacks: 'buyers/omniauth_callbacks' }
+  devise_for :sellers, controllers: { registrations: "registrations" }
 
   resources :buyers do
     resources :orders, only: [:new]
