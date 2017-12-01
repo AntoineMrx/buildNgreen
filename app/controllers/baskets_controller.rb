@@ -46,6 +46,8 @@ class BasketsController < ApplicationController
   def destroy_cookies_item
     product_id = params[:product_id]
     session[:basket][product_id.to_sym] = nil
+    @array = get_items_from_cookie
+    @order = current_buyer.orders.where(status: "initiée")[0] if buyer_signed_in?
     redirect_to baskets_path
   end
 
