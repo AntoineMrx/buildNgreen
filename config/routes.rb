@@ -11,10 +11,10 @@ Rails.application.routes.draw do
   end
 
   resources :sellers do
-    resources :products, only: [:index, :new, :create, :edit, :update, :destroy]
+    resources :products, only: [:index, :new, :create, :edit, :update]
     resources :orders, only: [:index, :show, :edit, :update]
   end
-  resources :products, only: [:index, :show, :edit, :update]
+  resources :products, only: [:index, :show, :edit, :update, :destroy]
   resources :categories
   resources :orders, only: [:index, :show, :edit]
   resources :baskets

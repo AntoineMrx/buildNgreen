@@ -1,5 +1,7 @@
-<%= simple_form_for [@seller, @product] do |f| %>
-  <%= f.error_notification %>
+<div id="container-form">
+  <%= link_to 'Back', products_path %>
+  <%= simple_form_for [@seller, @product] do |f| %>
+   <%= f.error_notification %>
 
   <div class="form-inputs">
     <%= f.input :name, label: "Titre"  %>
@@ -37,6 +39,7 @@
       <% if !product.photo_1.nil?%>
       <%= cl_image_tag @product.photo_1.url(:thumbnail) %>
       <% end %>
+
     <% end %>
   </div>
   <div class="form-inputs">
@@ -65,3 +68,5 @@
   </div>
 
 <% end %>
+
+</div>
