@@ -3,8 +3,8 @@ Rails.application.routes.draw do
 
   mount Attachinary::Engine => "/attachinary"
 
-  devise_for :sellers, controllers: { registrations: "registrations" }
   devise_for :buyers, controllers: { registrations: "registrations", omniauth_callbacks: 'buyers/omniauth_callbacks' }
+  devise_for :sellers, controllers: { registrations: "registrations" }
 
   resources :buyers do
     resources :orders, only: [:new]
@@ -19,8 +19,10 @@ Rails.application.routes.draw do
   resources :orders, only: [:index, :show, :edit]
   resources :baskets
 
-  post "add_item", to: "baskets#add_item"
-  post "destroy_cookies_item/:product_id", to: "baskets#destroy_cookies_item"
+
+  post "add_item/", to: "baskets#add_item"
+  post "destroy_cookies_item/:product_id", to: "baskets#destroy_cookies_item", as: 'cookies'
+
   get "search", to: "products#search"
 
   root to: 'pages#home'

@@ -1,6 +1,6 @@
 <%= simple_form_for (@seller) do |f| %>
         <div class="form-inputs">
-          <%= f.input :company_logo %>
+          <%= f.input :company_logo, label: "Logo de Société" %>
           <%= f.input :company_logo_cache, as: :hidden %>
           <% if !current_page?(new_seller_path) %>
             <% if !@seller.company_logo.nil?%>
@@ -8,19 +8,39 @@
             <% end %>
           <% end %>
         </div>
-        <%= f.input :company_name %>
-        <%= f.label :description %>
-        <%= f.text_area :description %>
-        <%= f.input :delivery_time %>
-        <%= f.input :website  %>
-        <%= f.input :last_name %>
-        <%= f.input :first_name %>
-        <%= f.input :email %>
-        <%= f.input :address %>
-        <%= f.input :delivery_fee %>
-        <%= f.input :delivery_free_from %>
+        <div class="form-inputs">
+          <%= f.input :company_name, label: "Nom de Société" %>
+        </div>
+        <div class="form-inputs">
+          <%= f.label :description %>
+          <%= f.text_area :description %>
+        </div>
+        <div class="form-inputs">
+          <%= f.input :website, label: "Site Web"  %>
+        </div>
+        <div class="form-inputs">
+          <%= f.input :last_name, label: "Nom de famille" %>
+        </div>
+        <div class="form-inputs">
+          <%= f.input :first_name, label: "Prénom" %>
+        </div>
+        <div class="form-inputs">
+          <%= f.input :email %>
+        </div>
+        <div class="form-inputs">
+          <%= f.input :address, label: "Adresse" %>
+        </div>
+        <div class="form-inputs">
+          <%= f.input :delivery_time, label: "Délai de livraison" %>
+        </div>
+        <div class="form-inputs">
+          <%= f.input :delivery_fee, label: "Frais de livraison" %>
+        </div>
+        <div class="form-inputs">
+          <%= f.input :delivery_free_from, label: "Livraison gratuite à partir de :" %>
+        </div>
 
 
 
-        <%= f.submit "Submit", class: "btn btn-primary" %>
+        <%= f.submit "Confirmer", class: "btn btn-primary" %>
         <% end %>

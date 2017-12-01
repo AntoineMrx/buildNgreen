@@ -12,14 +12,24 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 0;
+  margin-bottom: 0px;
 }
 
 /* Logo */
-.navbar-wagon-brand .fa {
+.navbar-wagon-brand{
+  color: $gray;
+  font-weight: bold;
+  text-decoration: none;
+  .fa {
   height: 50px;
   color: $green;
 
+}
+}
+
+.navbar-wagon-brand:hover{
+  text-decoration: none;
+  color: $green;
 }
 
 /* User Avatar */
@@ -47,6 +57,7 @@
   text-align: center;
   color: $gray;
   font-size: 14px;
+  font-weight: bold;
 }
 .navbar-wagon-link:hover {
   color: $green;

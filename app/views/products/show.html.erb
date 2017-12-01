@@ -4,6 +4,8 @@
       <div id="titre" style="border-bottom: 3px solid lightgrey "><h1><%=  @product.name %></h1></div>
     </div>
 
+
+
     <div class="col-md-6" >
   <!-- image du produit vers la gauche (choisi une image par defaut pour tout les produits-->
     <!-- La category sous l'image -->
@@ -48,6 +50,13 @@
     <div class="col-md-6">
 
       <div id="price">
+
+    <% if current_seller == @product.seller %>
+
+        <%= link_to 'Edit Product', edit_seller_product_path(@seller), class: "btn btn-warning" %>
+
+      <% end %>
+
         <ul>
           <li><h4>Retail price:</h4> <%= @product.retail_price %> euros</li>
           <li><h5>Selling price:</h5> <%= @product.selling_price %> euros</li>
@@ -62,6 +71,7 @@
                 <% end %>
               </select>
             </div>
+
 
             </ul>
             <div class="row">
@@ -80,12 +90,9 @@
 <div>
     <%= link_to 'Edit Product', edit_seller_product_path(@seller), class: "btn btn-warning" %>
   </div>
+
     </div>
+  </div>
 
-
-
-  <!--   <div>
-      <%= link_to 'Edit Product', edit_product_path(@product), class: "btn btn-warning" %>
-    </div> -->
 </div>
 
