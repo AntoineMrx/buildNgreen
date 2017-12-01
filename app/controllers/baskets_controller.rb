@@ -12,24 +12,26 @@ class BasketsController < ApplicationController
   end
 
   def add_item
+    puts "ca commence!"
     product_id = params[:id]
+    quantity = params[:quantity]
     if buyer_signed_in?
       order = order_en_cours
       clean_cookies(order)
       if item_in_basket?(order, product_id)
-        iterate_item(order, product_id)
+        iterate_item(order, product_id, quantity)
       else
         Basket.create(order_id: order.id, product_id: product_id, quantity: 1)
       end
     elsif session[:basket].nil?
       session[:basket] = {}
-      session[:basket][product_id.to_sym] = 1
+      session[:basket][product_id.to_sym] = quantity
     else
       basket = session[:basket]
       if basket[product_id].nil?
-        basket[product_id] = 1
+        basket[product_id] = quantity
       else
-        basket[product_id] += 1
+        basket[product_id] += quantity
       end
     session[:basket] = basket
     end
@@ -38,6 +40,12 @@ class BasketsController < ApplicationController
 
   def destroy
     @basket.destroy
+    redirect_to baskets_path
+  end
+
+  def destroy_cookies_item
+    product_id = params[:product_id]
+    session[:basket][product_id.to_sym] = nil
     redirect_to baskets_path
   end
 
@@ -71,9 +79,9 @@ class BasketsController < ApplicationController
     order.baskets.where(product_id: product_id).size > 0
   end
 
-  def iterate_item(order, product_id)
+  def iterate_item(order, product_id, quantity)
     basket = order.baskets.where(product_id: product_id)[0]
-    basket.quantity += 1
+    basket.quantity += quantity
   end
 
   def get_items_from_cookie

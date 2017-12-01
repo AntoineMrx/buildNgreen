@@ -19,10 +19,12 @@
         }(document, 'script', 'facebook-jssdk'));
       </script>
     <%= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
-    <%= yield %>
-    <%= render 'shared/footer' %>
-    <%= javascript_include_tag 'application' %>
-    <%= cloudinary_js_config %>
+    <div style = "margin-top: 70px">
+      <%= render 'shared/flashes' %>
+      <%= yield %>
+      <%= render 'shared/footer' %>
+      <%= javascript_include_tag 'application' %>
+      <%= cloudinary_js_config %>
+    </div>
   </body>
 </html>

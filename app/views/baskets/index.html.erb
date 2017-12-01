@@ -25,11 +25,11 @@
           <td><%= product.seller.company_name %></td>
           <td class="figures"><%= product.id %></td>
           <td class="figures"><%= quantity = basket[:quantity] %></td>
-          <td class="figures"><%= quantity * product.selling_price %>€</td>
+          <td class="figures"><%= price = quantity * product.selling_price %>€</td>
           <td>
             <%= link_to basket_path(basket), method: :delete do %>
               <i class="fa fa-times-circle-o" aria-hidden="true"></i>
-        <% end %>
+            <% end %>
           </td>
         </tr>
         <% end %>
@@ -54,7 +54,11 @@
           <td class="figures"><%= product.id %></td>
           <td class="figures"><%= quantity = basket[:quantity] %></td>
           <td class="figures"><%= quantity * product.selling_price %>€</td>
-          <td></td>
+          <td>
+            <%= link_to destroy_cookies_item_path(basket[:product_id]) do %>
+              <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+            <% end %>
+          </td>
         </tr>
         <% end %>
         <tr>

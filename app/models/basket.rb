@@ -7,7 +7,8 @@ class Basket < ApplicationRecord
     total = 0
     array.each do |basket|
       price = Product.find(basket[:product_id]).selling_price
-      total += price
+      quantity = basket.quantity
+      total += (price * quantity)
     end
     return total
   end
