@@ -152,6 +152,83 @@ puts 'Creating 200 fake orders with baskets...'
   end
 end
 
+puts 'starting Nokogiri'
+
+selection = []
+url = "https://www.leroymerlin.fr/v3/search/search.do?resultOffset=0&resultLimit=50&resultListShape=PLAIN&keyword=bois"
+html_file = open(url).read
+html_doc = Nokogiri::HTML(html_file)
+html_doc.search('.prd-infos').search('h3').each do |element|
+  title = element.text.strip
+  print title
+  url = element.search('a').first.attr('href')
+  selection << { name: title, url: url }
+end
+
+
+url = "https://www.leroymerlin.fr/v3/search/search.do?resultOffset=0&resultLimit=50&resultListShape=PLAIN&keyword=verre"
+html_file = open(url).read
+html_doc = Nokogiri::HTML(html_file)
+html_doc.search('.prd-infos').search('h3').each do |element|
+  title = element.text.strip
+  print title
+  url = element.search('a').first.attr('href')
+  selection << { name: title, url: url }
+end
+
+url = "https://www.leroymerlin.fr/v3/search/search.do?resultOffset=0&resultLimit=50&resultListShape=PLAIN&keyword=mur"
+html_file = open(url).read
+html_doc = Nokogiri::HTML(html_file)
+html_doc.search('.prd-infos').search('h3').each do |element|
+  title = element.text.strip
+  print title
+  url = element.search('a').first.attr('href')
+  selection << { name: title, url: url }
+end
+
+
+url = "https://www.leroymerlin.fr/v3/search/search.do?resultOffset=0&resultLimit=50&resultListShape=PLAIN&keyword=luminaire"
+html_file = open(url).read
+html_doc = Nokogiri::HTML(html_file)
+html_doc.search('.prd-infos').search('h3').each do |element|
+  title = element.text.strip
+  print title
+  url = element.search('a').first.attr('href')
+  selection << { name: title, url: url }
+end
+
+url = "https://www.leroymerlin.fr/v3/search/search.do?resultOffset=0&resultLimit=50&resultListShape=PLAIN&keyword=peinture"
+html_file = open(url).read
+html_doc = Nokogiri::HTML(html_file)
+html_doc.search('.prd-infos').search('h3').each do |element|
+  title = element.text.strip
+  print title
+  url = element.search('a').first.attr('href')
+  selection << { name: title, url: url }
+end
+
+
+puts 'crapping each page'
+
+selection.each do |product|
+  url = "https://www.leroymerlin.fr/#{product[:url]}"
+  html_file = open(url).read
+  html_doc = Nokogiri::HTML(html_file)
+  if html_doc.search('.desc').first.nil?
+    desc = "Description hyper longue vraiment trop bien vazy achète fais pas ton.a crevard.e"
+  else
+    desc = html_doc.search('.desc').first.text.strip
+  end
+  puts desc
+  new = Product.create(
+    name: product[:name],
+    description: desc,
+    selling_price: (10..200).to_a.sample,
+    retail_price: (10..200).to_a.sample,
+    category_id: (1..11).to_a.sample,
+    seller_id: (1..25).to_a.sample)
+  puts new
+end
 
 puts "finish"
 
