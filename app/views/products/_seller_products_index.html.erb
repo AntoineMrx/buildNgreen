@@ -17,6 +17,7 @@
             <th class="th-header" >Prix de vente</th>
             <th class="th-header" >Quantité</th>
             <th class="th-header" >Détails</th>
+            <th class="th-header" ></th>
           </tr>
         </thead>
         <tbody>
@@ -34,6 +35,7 @@
               <%= link_to "Détails", product_path(product), class:"btn btn-primary" %>
               <%= f.button :submit, "Mettre à jour" %>
             </td>
+            <td> <%= link_to "supprimer", product, method: :delete, data: { confirm: "Êtes-vous sûr(e)?" } %></td>
           </tr>
           <% end %>
         <% end %>
