@@ -51,7 +51,7 @@
 .card-product-description h2 {
   font-size: 18px;
   margin-bottom: 0px;
-  //font-weight: lighter;
+  font-weight: lighter;
 }
 .card-product-description p {
   font-size: 14px;
@@ -96,7 +96,7 @@
   padding: 0 10px;
   color: $green;
   opacity: 0.7;
-  font-size: 22px;
+  font-size: 28px;
 }
 .card-product-footer .controls i:hover{
   opacity: 0.4;
@@ -104,4 +104,8 @@
 
 .fa-cart-plus {
   cursor: pointer;
+}
+
+ .fa-tags{
+  color:$green;
 }
