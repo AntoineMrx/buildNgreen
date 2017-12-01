@@ -126,26 +126,6 @@ puts 'Creating 200 fake orders with baskets...'
   end
 end
 
-puts 'Creating 200 fake orders with baskets...'
-2.times do
-  order = Order.new(
-    order_date: Faker::Date.between(200.days.ago, Date.today),
-    status: ["En attente de validation", "Validé", "Livraison en cours", "Livré", "Annulé"].sample,
-    address: "#{Faker::Address.street_address} #{Faker::Address.zip_code} #{Faker::Address.city}",
-    buyer_id: 10,
-  )
-  order.save!
-  15.times do
-    basket = Basket.new(
-      quantity: (1..5).to_a.sample,
-      product_price: (1..200).to_a.sample,
-      vat: 20,
-      order_id: order.id,
-      product_id: (11..50).to_a.sample,
-      )
-    basket.save!
-  end
-end
 
 puts 'starting Nokogiri'
 
@@ -223,6 +203,27 @@ selection.each do |product|
     category_id: (1..11).to_a.sample,
     seller_id: (1..25).to_a.sample)
   puts new
+end
+
+puts 'Creating 200 fake orders with baskets...'
+2.times do
+  order = Order.new(
+    order_date: Faker::Date.between(200.days.ago, Date.today),
+    status: ["En attente de validation", "Validé", "Livraison en cours", "Livré", "Annulé"].sample,
+    address: "#{Faker::Address.street_address} #{Faker::Address.zip_code} #{Faker::Address.city}",
+    buyer_id: 10,
+  )
+  order.save!
+  15.times do
+    basket = Basket.new(
+      quantity: (1..5).to_a.sample,
+      product_price: (1..200).to_a.sample,
+      vat: 20,
+      order_id: order.id,
+      product_id: (11..50).to_a.sample,
+      )
+    basket.save!
+  end
 end
 
 puts "finish"
