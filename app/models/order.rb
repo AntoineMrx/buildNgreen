@@ -6,7 +6,7 @@ class Order < ApplicationRecord
   def sum
     sum = 0
     baskets.each do |item|
-      sum += item.product_price
+      sum += item.product_price unless item.product_price.nil?
     end
     return sum
   end

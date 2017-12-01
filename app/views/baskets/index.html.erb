@@ -41,6 +41,9 @@
           <td class="figures"><strong><%= Basket.total_price(@order.baskets) %>€</strong></td>
           <td></td>
         </tr>
+        <tr class="figures">
+          <td colspan = 6 class="figures"><%= link_to "Valider", order_path(@order), class:"btn btn-success", method: :put %></td>
+        </tr>
       <% else %>
         <% @array.each do |basket| %>
         <tr>
@@ -69,11 +72,11 @@
           <td class="figures"><strong><%= Basket.total_price(@array) %>€</strong></td>
           <td></td>
         </tr>
+        <tr class="figures">
+          <td colspan = 6 class="figures"><%= link_to "Valider", "#", class:"btn btn-success" %></td>
+        </tr>
       <% end %>
     <% end %>
-      <tr class="figures">
-        <td colspan = 6 class="figures"><div class="btn btn-success">Valider</div></td>
-      </tr>
   </table>
 
 </div>

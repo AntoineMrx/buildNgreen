@@ -45,11 +45,11 @@
           <th class="th-header">Statut</th>
           <th></th>
         </tr>
-      <% @buyer.orders.where.not(status:"initiée").each do |order| %>
+      <% @buyer.orders.where.not(status:"initiée").sort_by{|e| -e[:id]}.each do |order| %>
         <tr>
           <td> <%= order.order_date %> </td>
           <td> Commande N°<%= order.id %> </td>
-          <td> <%= order.sum %>€ </td>
+          <td> <%= order.sum  %>€ </td>
           <!-- Mettre une mise en forme pour le statut (ou des pictos) ? ex : vert, rouge, gris -->
           <td> <%= order.status %> </td>
           <td> <%= link_to "Détails", order_path(order), class:"btn btn-success" %> </td>
