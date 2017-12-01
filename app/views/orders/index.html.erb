@@ -8,14 +8,14 @@
       <table>
         <thead>
           <tr>
-            <th class="th-header" >#-Ref</th>
+            <th class="th-header" >#-Réf</th>
             <th class="th-header" >Date</th>
-            <th class="th-header" >First Name</th>
-            <th class="th-header" >Last Name</th>
-            <th class="th-header" >Delivery Address</th>
-            <th class="th-header" >Price</th>
-            <th class="th-header" >Status</th>
-            <th class="th-header" >View Details</th>
+            <th class="th-header" >Prénom</th>
+            <th class="th-header" >Nom de famille</th>
+            <th class="th-header" >Adresse de Livraison</th>
+            <th class="th-header" >Prix (€)</th>
+            <th class="th-header" >Statut</th>
+            <th class="th-header" >Voir Détails</th>
           </tr>
         </thead>
         <tbody>
@@ -30,7 +30,7 @@
             <td><%= order.buyer.address %></td>
             <td><%= order.sum %></td>
             <td><%= f.select :status, options_for_select(["En attente de validation", "Validé", "Livraison en cours", "Livré", "Annulé"]) %>
-            <%= f.button :submit %>
+            <%= f.button :submit, "Mettre à jour" %>
             </td>
             <td><%= link_to "Détails", order_path(order), class:"btn btn-success" %></td>
           </tr>
