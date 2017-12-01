@@ -16,10 +16,13 @@
 }
 
 /* Logo */
-.navbar-wagon-brand .fa {
+.navbar-wagon-brand{
+  color: $gray;
+  .fa {
   height: 50px;
   color: $green;
 
+}
 }
 
 /* User Avatar */
