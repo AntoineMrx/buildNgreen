@@ -8,17 +8,37 @@
             <% end %>
           <% end %>
         </div>
-        <%= f.input :company_name, label: "Nom de Société" %>
-        <%= f.label :description %>
-        <%= f.text_area :description %>
-        <%= f.input :website, label: "Site Web"  %>
-        <%= f.input :last_name, label: "Nom de famille" %>
-        <%= f.input :first_name, label: "Prénom" %>
-        <%= f.input :email %>
-        <%= f.input :address, label: "Adresse" %>
-        <%= f.input :delivery_time, label: "Délai de livraison" %>
-        <%= f.input :delivery_fee, label: "Frais de livraison" %>
-        <%= f.input :delivery_free_from, label: "Livraison gratuite à partir de :" %>
+        <div class="form-inputs">
+          <%= f.input :company_name, label: "Nom de Société" %>
+        </div>
+        <div class="form-inputs">
+          <%= f.label :description %>
+          <%= f.text_area :description %>
+        </div>
+        <div class="form-inputs">
+          <%= f.input :website, label: "Site Web"  %>
+        </div>
+        <div class="form-inputs">
+          <%= f.input :last_name, label: "Nom de famille" %>
+        </div>
+        <div class="form-inputs">
+          <%= f.input :first_name, label: "Prénom" %>
+        </div>
+        <div class="form-inputs">
+          <%= f.input :email %>
+        </div>
+        <div class="form-inputs">
+          <%= f.input :address, label: "Adresse" %>
+        </div>
+        <div class="form-inputs">
+          <%= f.input :delivery_time, label: "Délai de livraison" %>
+        </div>
+        <div class="form-inputs">
+          <%= f.input :delivery_fee, label: "Frais de livraison" %>
+        </div>
+        <div class="form-inputs">
+          <%= f.input :delivery_free_from, label: "Livraison gratuite à partir de :" %>
+        </div>
 
 
 
