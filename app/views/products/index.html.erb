@@ -1,4 +1,4 @@
-  <% if current_page?(seller_products_path(current_seller)) %>
+  <% if !current_page?(products_path) %>
     <%= render "seller_products_index" %>
   <% else %>
 
