@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-
-
-
-
   get 'baskets/show'
 
   mount Attachinary::Engine => "/attachinary"
@@ -22,7 +18,8 @@ Rails.application.routes.draw do
   resources :orders, only: [:index, :show, :edit]
   resources :baskets
 
-  post "add_item", to: "baskets#add_item"
+  post "add_item/:product_id", to: "baskets#add_item"
+  post "destroy_cookies_item", to: "baskets#destroy_cookies_item"
   get "search", to: "products#search"
 
   root to: 'pages#home'
