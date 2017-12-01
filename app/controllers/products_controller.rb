@@ -28,7 +28,7 @@ class ProductsController < ApplicationController
 
   def update
     @product.update(product_params)
-    unless request.referrer == seller_url(current_seller)
+    unless request.referrer == seller_url
       redirect_to @product
     end
   end
