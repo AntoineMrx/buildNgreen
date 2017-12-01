@@ -1,5 +1,5 @@
 
-   <div class="container">
+   <div class="container-fluid">
     <div class="separator">
     <h2>Tous nos produits</h2>
     </div>
@@ -17,7 +17,8 @@
           </div>
           <div class="card-product-footer">
            <!--  <p><strong>Category: </strong><%= product.category.name %></p> -->
-           <p><strong>Prix: </strong><%= product.selling_price %> euros</p>
+
+           <p><i class="fa fa-tags" aria-hidden="true"></i> <strong><%= product.selling_price %> euros</strong></p>
             <div class="controls">
                 <i id="<%= product.id %>" class="fa fa-cart-plus" aria-hidden="true"></i>
             </div>

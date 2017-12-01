@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
     @word = params[:word]
     @productList = []
     Product.all.each do |product|
-      @productList << product if product.name.downcase.include?(@word)
+      @productList << product if product.name.downcase.include?(@word.downcase)
     end
     p @productList
 

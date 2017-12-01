@@ -1,3 +1,4 @@
+<div class="container">
 <% if current_page?("/buyers/sign_up") %>
 <h2> Seller Sign up</h2>
 <p><%= link_to "Je suis un marchand", new_seller_registration_path %></p>
@@ -5,14 +6,19 @@
 <% else %>
 <h2>Sign up</h2>
 <% end %>
-
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-    <%= f.input :password_confirmation, required: true %>
+    <div class="form-group">
+      <%= f.input :email, required: true, autofocus: true %>
+    </div>
+    <div class="form-group" >
+      <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+    </div>
+    <div class="form-group">
+      <%= f.input :password_confirmation, required: true %>
+    </div>
   </div>
 
   <div class="form-actions">
@@ -21,3 +27,4 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+</div>
