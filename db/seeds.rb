@@ -126,11 +126,6 @@ puts 'Creating 200 fake orders with baskets...'
   end
 end
 
-
-50.times do
-  Product.create(name: 'TEST PRODUCT', description: 'Osb en bois de chutes d\'atelier', selling_price: 37, retail_price: 38,category_id: (1..11).to_a.sample, seller_id: 3)
-end
-
 puts 'Creating 200 fake orders with baskets...'
 2.times do
   order = Order.new(
